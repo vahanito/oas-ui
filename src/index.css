@@ -1,5 +1,4 @@
 body {
-    background-color: #92a3a9;
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -27,21 +26,26 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, .8);
-    outline: 1px solid #495562;
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
 
-main > .container {
+main > .container-fluid {
     background-color: rgba(255, 255, 255, .95);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 0;
     min-height: 95%;
 }
 
-.container {
+.container-fluid {
     margin-bottom: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.inner-component {
+    outline: 2px solid slategrey;
+    padding-left: 10px;
 }
 
 hr {

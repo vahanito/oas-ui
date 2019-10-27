@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 import OasService from '../../services/OasService';
+import ComponentLink from "../../components/ComponentLink";
 
 class RequestBody extends React.Component {
 
@@ -10,7 +10,7 @@ class RequestBody extends React.Component {
     const contentType = Object.keys(requestBody.content)[0];
     const componentName = OasService.componentNameFromRef(requestBody.content[contentType].schema.$ref);
     return (
-      <div className="container box-shadow">
+      <div className="container-fluid box-shadow">
         <h4 className="required">Request body</h4>
         <hr/>
         <p>{requestBody.description}</p>
@@ -24,10 +24,7 @@ class RequestBody extends React.Component {
           <tbody>
           <tr>
             <td>
-              <Link to={'/components/' + componentName}>{componentName}</Link>
-              <Link to={'/components/' + componentName} target="_blank">
-                <i className="pl-2 fa fa-external-link" aria-hidden="true"/>
-              </Link>
+              <ComponentLink componentName={componentName}/>
             </td>
             <td>{contentType}</td>
           </tr>

@@ -7,7 +7,7 @@ Contact.propTypes = {
 
 export default function Contact(props) {
   return (
-    <div className="container box-shadow">
+    <div className="container-fluid box-shadow">
       <h5>Contact</h5>
       <hr/>
       <div className="row">

@@ -9,12 +9,13 @@ class Responses extends React.Component {
     const responses = OasService.transformResponses(this.props.responses)
                                 .map(response => <ResponseRow key={response.httpStatus} response={response}/>);
     return (
-      <div className="container box-shadow">
+      <div className="container-fluid box-shadow">
         <h4>Responses</h4>
         <hr/>
         <table className="table table-sm">
           <thead>
           <tr>
+            <th className="expander"/>
             <th>HttpStatus</th>
             <th>Description</th>
             <th>Content</th>

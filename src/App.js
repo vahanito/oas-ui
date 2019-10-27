@@ -22,7 +22,7 @@ class App extends React.Component {
         <Router>
           <Route path="/:category?/:item?" component={MenuFactory}/>
           <main>
-            <div className="container">
+            <div className="container-fluid">
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/resources/:resource?" component={ResourceContentFactory}/>

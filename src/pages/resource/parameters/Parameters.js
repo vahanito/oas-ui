@@ -14,7 +14,7 @@ function Parameters(props) {
                             <ParameterRow key={param.name} parameter={param}/>
                           );
   return (
-    <div className="container box-shadow">
+    <div className="container-fluid box-shadow">
       <h4>Parameters</h4>
       <hr/>
       <table className="table table-sm">

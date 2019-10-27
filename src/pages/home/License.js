@@ -7,7 +7,7 @@ License.propTypes = {
 
 export default function License(props) {
   return (
-    <div className="container box-shadow">
+    <div className="container-fluid box-shadow">
       <h5>License</h5>
       <hr/>
       <div className="row">

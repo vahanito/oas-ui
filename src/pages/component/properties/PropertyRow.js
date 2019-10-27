@@ -8,7 +8,7 @@ class PropertyRow extends React.Component {
     return (
       <tr>
         <td>
-          <label className={property.required ? 'required' : undefined}>{property.propertyName}</label>
+          <label className={this.props.required ? 'required' : undefined}>{property.propertyName}</label>
         </td>
         <td>
           {this.propertyType(property)}
@@ -31,7 +31,8 @@ class PropertyRow extends React.Component {
 }
 
 PropertyRow.propTypes = {
-  property: PropTypes.object
+  property: PropTypes.object,
+  required: PropTypes.bool
 };
 
 export default PropertyRow;

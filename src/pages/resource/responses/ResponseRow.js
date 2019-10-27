@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OasService from '../../../services/OasService';
-import {Link} from 'react-router-dom';
+import ComponentContent from "../../component/ComponentContent";
+import ComponentLink from "../../../components/ComponentLink";
 
 ResponseRow.propTypes = {
   response: PropTypes.object
@@ -18,26 +19,34 @@ function ResponseRow(props) {
                     : OasService.componentNameFromRef(response.content[contentType].schema.$ref);
   }
 
+  const component = OasService.getComponent(componentName);
   return (
-    <tr>
-      <td>
-        {response.httpStatus}
-      </td>
-      <td>
-        {response.description}
-      </td>
-      <td>
-        {componentName && <Link to={'/components/' + componentName}>{componentName}</Link>}
-        {componentName &&
-         <Link to={'/components/' + componentName} target="_blank">
-           <i className="pl-2 fa fa-external-link" aria-hidden="true"/>
-         </Link>
-        }
-      </td>
-      <td>
-        {contentType}
-      </td>
-    </tr>
+    <>
+      <tr key={componentName + response.httpStatus}
+          data-toggle="collapse"
+          data-target={"." + componentName + response.httpStatus}>
+        <td>
+          {component && <i className="fa fa-caret-down" aria-hidden="true"/>}
+        </td>
+        <td>
+          {response.httpStatus}
+        </td>
+        <td>
+          {response.description}
+        </td>
+        <td>
+          <ComponentLink componentName={componentName}/>
+        </td>
+        <td>
+          {contentType}
+        </td>
+      </tr>
+      {component && <tr className={"box-shadow inner-component collapse " + componentName + response.httpStatus}>
+        <td colSpan="100%">
+          <ComponentContent component={component} componentName={componentName}/>
+        </td>
+      </tr>}
+    </>
   );
 }
 
