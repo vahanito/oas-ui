@@ -101,10 +101,6 @@ h4.required:after {
     outline: 1px solid slategrey;
 }
 
-tr.collapse.in {
-    display: table-row;
-}
-
 .expander {
     width: 10px;
 }
