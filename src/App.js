@@ -20,14 +20,14 @@ class App extends React.Component {
     return (
       <>
         <Router>
-          <Route path="/:category?/:item?" component={MenuFactory}/>
+          <Route path="/oas-ui/:category?/:item?" component={MenuFactory}/>
           <main>
             <div className="container-fluid">
               <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/resources/:resource?" component={ResourceContentFactory}/>
-                <Route path="/components/:component?" component={ComponentContentFactory}/>
-                <Redirect from="*" to="/"/>
+                <Route exact path="/oas-ui/" component={Home}/>
+                <Route path="/oas-ui/resources/:resource?" component={ResourceContentFactory}/>
+                <Route path="/oas-ui/components/:component?" component={ComponentContentFactory}/>
+                <Redirect from="*" to="/oas-ui/"/>
               </Switch>
             </div>
           </main>
