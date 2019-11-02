@@ -9,8 +9,8 @@ import './App.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export const showOas = (spec, element) => {
-    ReactDOM.render(<App initValue={spec}/>, element);
+export const showOas = (specUrl, specData, element) => {
+    ReactDOM.render(<App initValue={specData} specUrl={specUrl}/>, element);
 };
 
 serviceWorker.unregister();
