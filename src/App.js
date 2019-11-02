@@ -11,16 +11,10 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    if (props.specUrl) {
-      axios.get(props.specUrl)
-        .then((response) => {
-            document.getElementById('log').innerText = response.status + ': ' + response.data;
-            this.initialized(response.data);
-            this.forceUpdate();
-        });   
-    } else {
-      this.initialized(props.initValue);
-    }
+    this.state = {
+      oas: props.initValue
+    };
+    OasService.setOas(props.initValue);
   }
 
   render() {
@@ -41,13 +35,6 @@ class App extends React.Component {
         </Router>
       </>
     );
-  }
-
-  initialized = (data) => {
-    this.state = {
-      oas: data
-    };
-    OasService.setOas(data);
   }
 
   onChange = (event) => {
