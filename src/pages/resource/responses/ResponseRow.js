@@ -27,6 +27,7 @@ class ResponseRow extends React.Component {
     const component = OasService.getComponent(componentName);
     return (
       <ExpandableRow
+        disabledExpansion={component === undefined}
         content={
           <RowContent>
             <td>

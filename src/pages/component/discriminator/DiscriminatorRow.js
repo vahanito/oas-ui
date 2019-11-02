@@ -8,8 +8,7 @@ import ExpandableContent from "../../../components/expandablerow/ExpandableConte
 
 DiscriminatorRow.propTypes = {
   value: PropTypes.string,
-  componentName: PropTypes.string,
-  propertyName: PropTypes.string,
+  componentName: PropTypes.string
 };
 
 function DiscriminatorRow(props) {
@@ -20,7 +19,6 @@ function DiscriminatorRow(props) {
           <td>
             <i className="fa fa-caret-down" aria-hidden="true"/>
           </td>
-          <td>{props.propertyName}</td>
           <td>{props.value}</td>
           <td><ComponentLink componentName={props.componentName}/></td>
         </RowContent>

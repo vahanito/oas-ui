@@ -8,24 +8,13 @@ import ExpandableContent from "../../../components/expandablerow/ExpandableConte
 import ComponentContent from "../../component/ComponentContent";
 
 class ParameterRow extends React.Component {
+
   render() {
     const parameter = this.props.parameter;
     const ref = this.getRef(parameter);
-    return ref ? this.expandableRow(parameter, ref)
-               : this.basicRow(parameter, ref);
-  }
-
-  basicRow = (parameter, ref) => {
-    return (
-      <tr>
-        {this.rowContent(parameter, ref)}
-      </tr>
-    );
-  };
-
-  expandableRow = (parameter, ref) => {
     return (
       <ExpandableRow
+        disabledExpansion={ref === undefined}
         content={
           <RowContent>
             {this.rowContent(parameter, ref)}
@@ -38,7 +27,7 @@ class ParameterRow extends React.Component {
         }
       />
     );
-  };
+  }
 
   rowContent = (parameter, ref) => {
     return (
@@ -49,7 +38,6 @@ class ParameterRow extends React.Component {
         <td>
           <label className={parameter.required ? 'required' : undefined}>{parameter.name}</label>
         </td>
-        <td>{parameter.in}</td>
         <td>
           {this.paramType(parameter, ref)}
         </td>

@@ -20,12 +20,16 @@ class ExpandableRow extends React.Component {
             </tr>
           );
         })}
-        {React.Children.map(this.props.expandableContent || null, (child, i) => {
+        {!this.isExpansionDisabled() && React.Children.map(this.props.expandableContent || null, (child, i) => {
           return <child.type isExpanded={this.isExpanded} {...child.props} key={i}/>;
         })}
       </>
     );
   }
+
+  isExpansionDisabled = () => {
+    return this.props.disabledExpansion === true;
+  };
 
   setExpanded = () => {
     this.setState({
@@ -41,7 +45,8 @@ class ExpandableRow extends React.Component {
 
 ExpandableRow.propTypes = {
   content: PropTypes.any,
-  expandableContent: PropTypes.any
+  expandableContent: PropTypes.any,
+  disabledExpansion: PropTypes.bool
 };
 
 export default ExpandableRow;

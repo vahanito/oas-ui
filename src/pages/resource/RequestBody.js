@@ -28,10 +28,11 @@ class RequestBody extends React.Component {
           </thead>
           <tbody>
           <ExpandableRow
+            disabledExpansion={componentName === undefined}
             content={
               <RowContent>
                 <td>
-                  <i className="fa fa-caret-down" aria-hidden="true"/>
+                  {componentName && <i className="fa fa-caret-down" aria-hidden="true"/>}
                 </td>
                 <td>
                   <ComponentLink componentName={componentName}/>

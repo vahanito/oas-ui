@@ -41,7 +41,7 @@ OasService.getComponent = (componentName) => {
   const components = OasService.oas.components;
   return (components && components.schemas && components.schemas[componentName])
          ? components.schemas[componentName]
-         : null;
+         : undefined;
 };
 
 OasService.getResource = (resourceName) => {

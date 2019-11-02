@@ -8,16 +8,13 @@ import ExpandableContent from "../../../components/expandablerow/ExpandableConte
 import ComponentContent from "../ComponentContent";
 
 class PropertyRow extends React.Component {
+
   render() {
     const property = this.props.property;
     const ref = this.getRef(property);
-    return ref ? this.expandableRow(property, ref)
-               : this.basicRow(property, ref);
-  }
-
-  expandableRow = (property, ref) => {
     return (
       <ExpandableRow
+        disabledExpansion={ref === undefined}
         content={
           <RowContent>
             {this.rowContent(property, ref)}
@@ -30,15 +27,7 @@ class PropertyRow extends React.Component {
         }
       />
     );
-  };
-
-  basicRow = (property, ref) => {
-    return (
-      <tr>
-        {this.rowContent(property, ref)}
-      </tr>
-    );
-  };
+  }
 
   rowContent = (property, ref) => {
     return (
@@ -59,12 +48,12 @@ class PropertyRow extends React.Component {
     );
   };
 
-  getRef = (param) => {
-    if (param.items) {
-      return param.items.oneOf ? OasService.getOneOfParentRef(param.items.oneOf)
-                               : param.schema.items.$ref;
+  getRef = (property) => {
+    if (property.items) {
+      return property.items.oneOf ? OasService.getOneOfParentRef(property.items.oneOf)
+                                  : property.items.$ref;
     }
-    return param.oneOf ? OasService.getOneOfParentRef(param.oneOf) : param.$ref;
+    return property.oneOf ? OasService.getOneOfParentRef(property.oneOf) : property.$ref;
   };
 
   propertyType = (param, ref) => {
