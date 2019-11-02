@@ -5,7 +5,6 @@ import ComponentContentFactory from './components/ComponentContentFactory';
 import ResourceContentFactory from './components/ResourceContentFactory';
 import MenuFactory from './components/MenuFactory';
 import Home from './pages/home/Home';
-import axios from 'axios';
 
 class App extends React.Component {
 
