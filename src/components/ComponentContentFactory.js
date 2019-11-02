@@ -12,7 +12,7 @@ export default function ComponentContentFactory(props) {
   const componentName = props.match.params['component'];
   const component = OasService.getComponent(componentName);
   return (
-    component !== null ? <ComponentContent component={component} componentName={componentName}/>
+    component !== null ? <ComponentContent componentName={componentName}/>
                        : <NotFound component={componentName}/>
   );
 }

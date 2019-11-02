@@ -2,11 +2,12 @@ import React from 'react';
 import Properties from './properties/Properties';
 import PropTypes from 'prop-types';
 import Discriminator from "./discriminator/Discriminator";
+import OasService from "../../services/OasService";
 
 class ComponentContent extends React.Component {
 
   render() {
-    const component = this.props.component;
+    const component = OasService.getComponent(this.props.componentName);
     const properties = this.getProperties(component);
     const requiredProperties = this.getRequiredProperties(component);
     return (
@@ -40,7 +41,6 @@ class ComponentContent extends React.Component {
 }
 
 ComponentContent.propTypes = {
-  component: PropTypes.object,
   componentName: PropTypes.string
 };
 

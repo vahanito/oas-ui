@@ -82,4 +82,11 @@ OasService.componentNameFromRef = (ref) => {
   return ref.split('/').pop();
 };
 
+OasService.getOneOfParentRef = (oneOf) => {
+  const childComponentName = OasService.componentNameFromRef(oneOf[0].$ref);
+  const childComponent = OasService.getComponent(childComponentName);
+  return childComponent.allOf.filter(value => value.$ref)
+                       .pop().$ref;
+};
+
 export default OasService;

@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import OasService from '../../../services/OasService';
 import ComponentContent from "../../component/ComponentContent";
 import ComponentLink from "../../../components/ComponentLink";
-import ExpandableRow from "../../../components/ExpandableRow";
+import ExpandableRow from "../../../components/expandablerow/ExpandableRow";
+import ExpandableContent from "../../../components/expandablerow/ExpandableContent";
+import RowContent from "../../../components/expandablerow/RowContent";
 
 class ResponseRow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isExpanded: false
-    }
   }
 
   render() {
@@ -27,41 +26,34 @@ class ResponseRow extends React.Component {
 
     const component = OasService.getComponent(componentName);
     return (
-      <>
-        <tr key={componentName + response.httpStatus}
-            onClick={this.setExpanded}>
-          <td>
-            {component && <i className="fa fa-caret-down" aria-hidden="true"/>}
-          </td>
-          <td>
-            {response.httpStatus}
-          </td>
-          <td>
-            {response.description}
-          </td>
-          <td>
-            <ComponentLink componentName={componentName}/>
-          </td>
-          <td>
-            {contentType}
-          </td>
-        </tr>
-        <ExpandableRow isExpanded={this.isExpanded}>
-          <ComponentContent component={component} componentName={componentName}/>
-        </ExpandableRow>
-      </>
+      <ExpandableRow
+        content={
+          <RowContent>
+            <td>
+              {component && <i className="fa fa-caret-down" aria-hidden="true"/>}
+            </td>
+            <td>
+              {response.httpStatus}
+            </td>
+            <td>
+              {response.description}
+            </td>
+            <td>
+              <ComponentLink componentName={componentName}/>
+            </td>
+            <td>
+              {contentType}
+            </td>
+          </RowContent>
+        }
+        expandableContent={
+          <ExpandableContent>
+            <ComponentContent componentName={componentName}/>
+          </ExpandableContent>
+        }
+      />
     );
   }
-
-  setExpanded = () => {
-    this.setState({
-      isExpanded: !this.state.isExpanded
-    });
-  };
-
-  isExpanded = () => {
-    return this.state.isExpanded;
-  };
 
 }
 

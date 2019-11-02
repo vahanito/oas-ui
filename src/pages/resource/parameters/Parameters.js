@@ -20,6 +20,7 @@ function Parameters(props) {
       <table className="table table-sm">
         <thead>
         <tr>
+          <th className="expander"/>
           <th>Name</th>
           <th>Param type</th>
           <th>Value type</th>
