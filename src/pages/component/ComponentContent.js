@@ -3,6 +3,7 @@ import Properties from './properties/Properties';
 import PropTypes from 'prop-types';
 import Discriminator from "./discriminator/Discriminator";
 import OasService from "../../services/OasService";
+import Parent from "./Parent";
 
 class ComponentContent extends React.Component {
 
@@ -10,11 +11,15 @@ class ComponentContent extends React.Component {
     const component = OasService.getComponent(this.props.componentName);
     const properties = this.getProperties(component);
     const requiredProperties = this.getRequiredProperties(component);
+    const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
+                                                 .pop().$ref
+                                      : undefined;
     return (
       <>
         <h2>{this.props.componentName}</h2>
         <p>{component.description}</p>
         {properties && <Properties properties={properties} required={requiredProperties}/>}
+        {parentRef && <Parent parentRef={parentRef}/>}
         {component.discriminator && <Discriminator discriminator={component.discriminator}/>}
         <pre>{JSON.stringify(component, null, 2)}</pre>
       </>
