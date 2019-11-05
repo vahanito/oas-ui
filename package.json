@@ -66,7 +66,12 @@
     }
   ],
   "homepage": "https://github.com/vahanito/oas-ui",
-  "keywords": ["openapi", "oas", "rest", "ui"],
+  "keywords": [
+    "openapi",
+    "oas",
+    "rest",
+    "ui"
+  ],
   "license": "GNU GPL v3",
   "private": false
 }

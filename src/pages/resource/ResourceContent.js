@@ -3,7 +3,7 @@ import PathComponent from '../../components/PathComponent';
 import Parameters from './parameters/Parameters';
 import RequestBody from './RequestBody';
 import Responses from './responses/Responses';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 ResourceContent.propTypes = {
   resource: PropTypes.object

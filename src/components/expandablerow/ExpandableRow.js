@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class ExpandableRow extends React.Component {
 
@@ -15,13 +15,13 @@ class ExpandableRow extends React.Component {
       <>
         {React.Children.map(this.props.content || null, (child, i) => {
           return (
-            <tr onClick={this.setExpanded}>
+            <tr onClick={this.toggleExpanded}>
               <child.type onClick {...child.props} key={i}/>
             </tr>
           );
         })}
         {!this.isExpansionDisabled() && React.Children.map(this.props.expandableContent || null, (child, i) => {
-          return <child.type isExpanded={this.isExpanded} {...child.props} key={i}/>;
+          return <child.type isExpanded={this.state.isExpanded} {...child.props} key={i}/>;
         })}
       </>
     );
@@ -31,16 +31,12 @@ class ExpandableRow extends React.Component {
     return this.props.disabledExpansion === true;
   };
 
-  setExpanded = () => {
-    this.setState({
-      isExpanded: !this.state.isExpanded
-    });
-  };
-
-  isExpanded = () => {
-    return this.state.isExpanded;
-  };
-
+  toggleExpanded = () => {
+    this.setState(state => ({
+      ...state,
+      isExpanded: !state.isExpanded
+    }));
+  }
 }
 
 ExpandableRow.propTypes = {
