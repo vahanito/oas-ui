@@ -11,7 +11,7 @@
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "webpack": "^4.41.2"
+    "rewire": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -23,13 +23,12 @@
     "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.13.0",
-    "prettier": "^1.18.2",
-    "webpack-cli": "^3.3.10"
+    "prettier": "^1.18.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-webpack-standalone": "webpack --mode production --config webpack.config.js",
+    "build-prod": "node ./scripts/build-non-split.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -66,7 +65,12 @@
     }
   ],
   "homepage": "https://github.com/vahanito/oas-ui",
-  "keywords": ["openapi", "oas", "rest", "ui"],
+  "keywords": [
+    "openapi",
+    "oas",
+    "rest",
+    "ui"
+  ],
   "license": "GNU GPL v3",
   "private": false
 }
