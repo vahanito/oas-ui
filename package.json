@@ -56,6 +56,7 @@
   "contributors": [
     {
       "name": "Tomas Vahancik",
+      "email": "vhn.448@gmail.com",
       "url": "https://github.com/vahanito"
     },
     {
@@ -67,5 +68,5 @@
   "homepage": "https://github.com/vahanito/oas-ui",
   "keywords": ["openapi", "oas", "rest", "ui"],
   "license": "GNU GPL v3",
-  "private": false,
+  "private": false
 }
