@@ -1,48 +1,43 @@
 import React from 'react';
-import Properties from './properties/Properties';
 import PropTypes from 'prop-types';
-import Discriminator from "./discriminator/Discriminator";
-import OasService from "../../services/OasService";
-import Parent from "./Parent";
+import Properties from './properties/Properties';
+import Discriminator from './discriminator/Discriminator';
+import OasService from 'services/OasService';
+import Parent from './Parent';
 
-class ComponentContent extends React.Component {
-
-  render() {
-    const component = OasService.getComponent(this.props.componentName);
-    const properties = this.getProperties(component);
-    const requiredProperties = this.getRequiredProperties(component);
-    const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
-                                                 .pop().$ref
-                                      : undefined;
-    return (
-      <>
-        <h2>{this.props.componentName}</h2>
-        <p>{component.description}</p>
-        {properties && <Properties properties={properties} required={requiredProperties}/>}
-        {parentRef && <Parent parentRef={parentRef}/>}
-        {component.discriminator && <Discriminator discriminator={component.discriminator}/>}
-        <pre>{JSON.stringify(component, null, 2)}</pre>
-      </>
-    );
+const getProperties = (component) => {
+  if (typeof component.properties === 'undefined' && component.allOf) {
+    return component.allOf.filter(value => value.properties)
+      .map(value => value.properties).pop();
   }
+  return component.properties;
+};
 
-  getProperties = (component) => {
-    let properties = component.properties;
-    if (properties === undefined && component.allOf) {
-      const allOfComponent = component.allOf.filter(value => value.properties);
-      properties = allOfComponent.map(value => value.properties).pop();
-    }
-    return properties;
-  };
+const getRequiredProperties = (component) => {
+  if (typeof component.required === 'undefined' && component.allOf) {
+    return component.allOf.filter(value => value.properties)
+      .map(value => value.required).pop();
+  }
+  return component.required;
+};
 
-  getRequiredProperties = (component) => {
-    let requiredProperties = component.required;
-    if (requiredProperties === undefined && component.allOf) {
-      const allOfComponent = component.allOf.filter(value => value.properties);
-      requiredProperties = allOfComponent.map(value => value.required).pop();
-    }
-    return requiredProperties;
-  };
+const ComponentContent = (props) => {
+  const component = OasService.getComponent(props.componentName);
+  const properties = getProperties(component);
+  const requiredProperties = getRequiredProperties(component);
+  const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
+                                                .pop().$ref
+                                    : undefined;
+  return (
+    <>
+      <h2>{props.componentName}</h2>
+      <p>{component.description}</p>
+      {properties && <Properties properties={properties} required={requiredProperties}/>}
+      {parentRef && <Parent parentRef={parentRef}/>}
+      {component.discriminator && <Discriminator discriminator={component.discriminator}/>}
+      <pre>{JSON.stringify(component, null, 2)}</pre>
+    </>
+  );
 }
 
 ComponentContent.propTypes = {

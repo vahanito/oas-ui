@@ -1,21 +1,19 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+
+const ExpandableContent = ({ children, isExpanded }) => (
+  <>
+    {isExpanded && <tr className="box-shadow inner-component">
+      <td colSpan="100%">
+        {children}
+      </td>
+    </tr>}
+  </>
+);
 
 ExpandableContent.propTypes = {
-  children: PropTypes.element,
-  isExpanded: PropTypes.func
+  children: PropTypes.element.isRequired,
+  isExpanded: PropTypes.bool.isRequired
 };
-
-function ExpandableContent(props) {
-  return (
-    <>
-      {props.isExpanded() && <tr className={"box-shadow inner-component"}>
-        <td colSpan="100%">
-          {props.children}
-        </td>
-      </tr>}
-    </>
-  );
-}
 
 export default ExpandableContent;

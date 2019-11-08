@@ -12,8 +12,8 @@ class CategoriesDropdown extends React.Component {
 
   render() {
     const dropdownItems = this.props.items.map(item =>
-      <button key={item} type="button" className="dropdown-item"
-              onClick={() => this.onItemSelected(item)}>
+      <button key={item} name={item} type="button" className="dropdown-item"
+              onClick={this.onItemSelected}>
         {item}
       </button>
     );
@@ -30,10 +30,9 @@ class CategoriesDropdown extends React.Component {
     );
   }
 
-  onItemSelected = (item) => {
-    this.setState({
-      category: item
-    });
+  onItemSelected = (event) => {
+    const item = event.target.name;
+    this.setState({ category: item });
     this.props.onItemSelected(item);
   };
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from '../../../services/OasService';
-import ComponentLink from "../../../components/ComponentLink";
-import RowContent from "../../../components/expandablerow/RowContent";
-import ExpandableRow from "../../../components/expandablerow/ExpandableRow";
-import ExpandableContent from "../../../components/expandablerow/ExpandableContent";
-import ComponentContent from "../../component/ComponentContent";
+import OasService from 'services/OasService';
+import ComponentLink from 'components/ComponentLink';
+import RowContent from 'components/expandablerow/RowContent';
+import ExpandableRow from 'components/expandablerow/ExpandableRow';
+import ExpandableContent from 'components/expandablerow/ExpandableContent';
+import ComponentContent from 'pages/component/ComponentContent';
 
 class ParameterRow extends React.Component {
 
@@ -61,7 +61,6 @@ class ParameterRow extends React.Component {
     return param.schema.items ? primitiveType + '[]'
                               : primitiveType;
   };
-
 }
 
 ParameterRow.propTypes = {

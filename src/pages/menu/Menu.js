@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ComponentList from './ComponentList';
 import CategoriesDropdown from './CategoriesDropdown';
 import ResourceList from './ResourceList';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 class Menu extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      categories: props.categories,
       category: props.category
     };
   }
@@ -21,8 +20,11 @@ class Menu extends React.Component {
         <Link to="" className="navbar-brand col-sm-1 col-md-1 mr-0" href="#">oas-ui</Link>
 
         <ul className="navbar-nav col-sm-1 col-md-1">
-          <CategoriesDropdown items={this.state.categories} selectedItem={this.state.category}
-                              onItemSelected={(item) => this.onItemSelected(item)}/>
+          <CategoriesDropdown
+            items={this.props.categories}
+            selectedItem={this.state.category}
+            onItemSelected={this.onItemSelected}
+          />
         </ul>
         {this.state.category.toLowerCase() === 'components' && <ComponentList title="Components"/>}
         {this.state.category.toLowerCase() === 'resources' && <ResourceList title="Resources"/>}
@@ -31,9 +33,7 @@ class Menu extends React.Component {
   }
 
   onItemSelected = (item) => {
-    this.setState({
-      category: item
-    });
+    this.setState({ category: item });
   };
 }
 
