@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from 'services/OasService';
+import OasService from 'src/services/OasService';
 import ResponseRow from './ResponseRow';
 
 const Responses = (props) => {
@@ -27,7 +27,7 @@ const Responses = (props) => {
       </table>
     </div>
   );
-}
+};
 
 Responses.propTypes = {
   responses: PropTypes.object

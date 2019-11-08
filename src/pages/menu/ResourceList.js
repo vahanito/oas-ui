@@ -1,7 +1,7 @@
 import React from 'react';
-import OasService from '../../services/OasService';
 import {Link} from 'react-router-dom';
-import PathComponent from '../../components/PathComponent';
+import PathComponent from "src/components/PathComponent";
+import OasService from "src/services/OasService";
 
 class ResourceList extends React.Component {
 

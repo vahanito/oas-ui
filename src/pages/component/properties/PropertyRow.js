@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from '../../../services/OasService';
-import ComponentLink from '../../../components/ComponentLink';
-import ExpandableRow from "../../../components/expandablerow/ExpandableRow";
-import RowContent from "../../../components/expandablerow/RowContent";
-import ExpandableContent from "../../../components/expandablerow/ExpandableContent";
-import ComponentContent from "../ComponentContent";
+import ExpandableRow from "src/components/expandablerow/ExpandableRow";
+import RowContent from "src/components/expandablerow/RowContent";
+import ExpandableContent from "src/components/expandablerow/ExpandableContent";
+import ComponentContent from "src/pages/component/ComponentContent";
+import OasService from "src/services/OasService";
+import ComponentLink from "src/components/ComponentLink";
 
 class PropertyRow extends React.Component {
 
@@ -21,7 +21,7 @@ class PropertyRow extends React.Component {
           </RowContent>
         }
         expandableContent={
-          <ExpandableContent>
+          <ExpandableContent isExpanded>
             <ComponentContent componentName={OasService.componentNameFromRef(ref)}/>
           </ExpandableContent>
         }

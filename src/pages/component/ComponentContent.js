@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Properties from './properties/Properties';
 import Discriminator from './discriminator/Discriminator';
-import OasService from 'services/OasService';
+import OasService from 'src/services/OasService';
 import Parent from './Parent';
 
 const getProperties = (component) => {
@@ -38,7 +38,7 @@ const ComponentContent = (props) => {
       <pre>{JSON.stringify(component, null, 2)}</pre>
     </>
   );
-}
+};
 
 ComponentContent.propTypes = {
   componentName: PropTypes.string

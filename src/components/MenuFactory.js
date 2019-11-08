@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from 'services/OasService';
-import Menu from 'pages/menu/Menu';
+import OasService from 'src/services/OasService';
+import Menu from 'src/pages/menu/Menu';
 
 MenuFactory.propTypes = {
   match: PropTypes.object

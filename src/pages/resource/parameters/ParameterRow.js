@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from 'services/OasService';
-import ComponentLink from 'components/ComponentLink';
-import RowContent from 'components/expandablerow/RowContent';
-import ExpandableRow from 'components/expandablerow/ExpandableRow';
-import ExpandableContent from 'components/expandablerow/ExpandableContent';
-import ComponentContent from 'pages/component/ComponentContent';
+import OasService from 'src/services/OasService';
+import ComponentLink from 'src/components/ComponentLink';
+import RowContent from 'src/components/expandablerow/RowContent';
+import ExpandableRow from 'src/components/expandablerow/ExpandableRow';
+import ExpandableContent from 'src/components/expandablerow/ExpandableContent';
+import ComponentContent from 'src/pages/component/ComponentContent';
 
 class ParameterRow extends React.Component {
 

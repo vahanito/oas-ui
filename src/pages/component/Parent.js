@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExpandableRow from 'components/expandablerow/ExpandableRow';
-import RowContent from 'components/expandablerow/RowContent';
-import ExpandableContent from 'components/expandablerow/ExpandableContent';
-import ComponentLink from 'components/ComponentLink';
-import OasService from 'services/OasService';
+import ExpandableRow from 'src/components/expandablerow/ExpandableRow';
+import RowContent from 'src/components/expandablerow/RowContent';
+import ExpandableContent from 'src/components/expandablerow/ExpandableContent';
+import ComponentLink from 'src/components/ComponentLink';
+import OasService from 'src/services/OasService';
 import ComponentContent from './ComponentContent';
 
 Parent.propTypes = {

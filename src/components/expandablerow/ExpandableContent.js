@@ -13,7 +13,7 @@ const ExpandableContent = ({ children, isExpanded }) => (
 
 ExpandableContent.propTypes = {
   children: PropTypes.element.isRequired,
-  isExpanded: PropTypes.bool.isRequired
+  isExpanded: PropTypes.bool
 };
 
 export default ExpandableContent;
