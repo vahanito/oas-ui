@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import OasService from "src/services/OasService";
+import OasService from "../../services/OasService";
 
 class ComponentList extends React.Component {
 

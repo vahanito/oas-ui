@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Properties from './properties/Properties';
 import Discriminator from './discriminator/Discriminator';
-import OasService from 'src/services/OasService';
+import OasService from '../../services/OasService';
 import Parent from './Parent';
 
 const getProperties = (component) => {

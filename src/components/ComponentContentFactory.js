@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from 'src/services/OasService';
-import NotFound from 'src/pages/NotFound';
-import ComponentContent from "src/pages/component/ComponentContent";
+import OasService from '../services/OasService';
+import NotFound from '../pages/NotFound';
+import ComponentContent from "../pages/component/ComponentContent";
 
 ComponentContentFactory.propTypes = {
   match: PropTypes.object

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OasService from 'src/services/OasService';
-import ComponentContent from 'src/pages/component/ComponentContent';
-import ComponentLink from 'src/components/ComponentLink';
-import ExpandableRow from 'src/components/expandablerow/ExpandableRow';
-import ExpandableContent from 'src/components/expandablerow/ExpandableContent';
-import RowContent from 'src/components/expandablerow/RowContent';
+import OasService from '../../../services/OasService';
+import ComponentContent from '../../../pages/component/ComponentContent';
+import ComponentLink from '../../../components/ComponentLink';
+import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
+import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
+import RowContent from '../../../components/expandablerow/RowContent';
 
 const ResponseRow = (props) => {
   const response = props.response;
