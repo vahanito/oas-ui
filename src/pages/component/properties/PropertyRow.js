@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid'
 import ExpandableRow from "../../../components/expandablerow/ExpandableRow";
 import RowContent from "../../../components/expandablerow/RowContent";
 import ExpandableContent from "../../../components/expandablerow/ExpandableContent";
@@ -39,7 +40,8 @@ class PropertyRow extends React.Component {
           <label className={this.props.required ? 'required' : undefined}>{property.propertyName}</label>
         </td>
         <td>
-          {this.propertyType(property, ref)}
+            {this.propertyType(property, ref)}
+            {this.propertyTypeDetails(property, ref)}
         </td>
         <td>
           {property.description}
@@ -47,6 +49,29 @@ class PropertyRow extends React.Component {
       </RowContent>
     );
   };
+
+  propertyTypeDetails = (property, ref) => {
+    const propertyDetails = [
+        this.getPropertyParameter(property, 'Format', 'format'),
+        this.getPropertyParameter(property, 'Regex', 'regex'),
+        this.getPropertyParameter(property, 'Minimum', 'minimum'),
+        this.getPropertyParameter(property, 'Maximum', 'maximum'),
+        this.getPropertyParameter(property, 'Excl. min', 'exclusiveMinimum'),
+        this.getPropertyParameter(property, 'Excl. max', 'exclusiveMaximum'),
+        this.getPropertyParameter(property, 'Minimum length', 'minLength'),
+        this.getPropertyParameter(property, 'Maximum length', 'maxLength'),
+        this.getPropertyParameter(property, 'Minimum items', 'minItems'),
+        this.getPropertyParameter(property, 'Maximum items', 'maxItems'),
+    ];
+    const listItems = propertyDetails.filter(value => value).map((propertyDetail) =>
+      <li key={uuid()}>
+          {propertyDetail}
+      </li>
+    );
+    return (
+      <ul className={'property-detail-list'}>{listItems}</ul>
+    );
+  }
 
   getRef = (property) => {
     if (property.items) {
@@ -64,6 +89,16 @@ class PropertyRow extends React.Component {
     }
     return param.items ? primitiveType + '[]'
                        : primitiveType;
+  };
+
+  getPropertyParameter = (property, translatedName, parameterName) => {
+      let parameterValue = null;
+      if (property.items && property.items[parameterName]) {
+          parameterValue = property.items[parameterName];
+      } else if (property[parameterName]) {
+          parameterValue = property[parameterName];
+      }
+      return parameterValue === null ? null : translatedName + ': ' + parameterValue;
   };
 
 }
