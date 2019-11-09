@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import uuid from 'react-uuid'
-import ExpandableRow from "../../../components/expandablerow/ExpandableRow";
-import RowContent from "../../../components/expandablerow/RowContent";
-import ExpandableContent from "../../../components/expandablerow/ExpandableContent";
-import ComponentContent from "../../../pages/component/ComponentContent";
-import OasService from "../../../services/OasService";
-import ComponentLink from "../../../components/ComponentLink";
+import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
+import RowContent from '../../../components/expandablerow/RowContent';
+import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
+import ComponentContent from '../../../pages/component/ComponentContent';
+import OasService from '../../../services/OasService';
+import ComponentLink from '../../../components/ComponentLink';
+import propertyDetailNames from '../../../services/PropertyDetailNames';
 
 class PropertyRow extends React.Component {
 
@@ -22,7 +22,7 @@ class PropertyRow extends React.Component {
           </RowContent>
         }
         expandableContent={
-          <ExpandableContent isExpanded>
+          <ExpandableContent>
             <ComponentContent componentName={OasService.componentNameFromRef(ref)}/>
           </ExpandableContent>
         }
@@ -40,8 +40,8 @@ class PropertyRow extends React.Component {
           <label className={this.props.required ? 'required' : undefined}>{property.propertyName}</label>
         </td>
         <td>
-            {this.propertyType(property, ref)}
-            {this.propertyTypeDetails(property, ref)}
+          {this.propertyType(property, ref)}
+          {this.propertyTypeDetails(property)}
         </td>
         <td>
           {property.description}
@@ -50,28 +50,23 @@ class PropertyRow extends React.Component {
     );
   };
 
-  propertyTypeDetails = (property, ref) => {
-    const propertyDetails = [
-        this.getPropertyParameter(property, 'Format', 'format'),
-        this.getPropertyParameter(property, 'Regex', 'regex'),
-        this.getPropertyParameter(property, 'Minimum', 'minimum'),
-        this.getPropertyParameter(property, 'Maximum', 'maximum'),
-        this.getPropertyParameter(property, 'Excl. min', 'exclusiveMinimum'),
-        this.getPropertyParameter(property, 'Excl. max', 'exclusiveMaximum'),
-        this.getPropertyParameter(property, 'Minimum length', 'minLength'),
-        this.getPropertyParameter(property, 'Maximum length', 'maxLength'),
-        this.getPropertyParameter(property, 'Minimum items', 'minItems'),
-        this.getPropertyParameter(property, 'Maximum items', 'maxItems'),
-    ];
+  propertyTypeDetails = (property) => {
+    const propertyDetails = Object.entries(propertyDetailNames)
+                                  .map(entry => this.getPropertyParameter(property, entry[1], entry[0]));
     const listItems = propertyDetails.filter(value => value).map((propertyDetail) =>
-      <li key={uuid()}>
-          {propertyDetail}
-      </li>
+      <tr key={propertyDetail.name}>
+        <td>
+          {propertyDetail.name}:
+        </td>
+        <td>
+          {propertyDetail.value}
+        </td>
+      </tr>
     );
     return (
-      <ul className={'property-detail-list'}>{listItems}</ul>
+      <table className='table-borderless property-detail-list'>{listItems}</table>
     );
-  }
+  };
 
   getRef = (property) => {
     if (property.items) {
@@ -83,7 +78,7 @@ class PropertyRow extends React.Component {
 
   propertyType = (param, ref) => {
     const primitiveType = param.items ? param.items.type : param.type;
-    const componentName = ref ?  OasService.componentNameFromRef(ref) : undefined;
+    const componentName = ref ? OasService.componentNameFromRef(ref) : undefined;
     if (componentName) {
       return <ComponentLink componentName={componentName} isArray={!!param.items}/>;
     }
@@ -92,13 +87,16 @@ class PropertyRow extends React.Component {
   };
 
   getPropertyParameter = (property, translatedName, parameterName) => {
-      let parameterValue = null;
-      if (property.items && property.items[parameterName]) {
-          parameterValue = property.items[parameterName];
-      } else if (property[parameterName]) {
-          parameterValue = property[parameterName];
-      }
-      return parameterValue === null ? null : translatedName + ': ' + parameterValue;
+    let parameterValue;
+    if (property.items && property.items[parameterName]) {
+      parameterValue = property.items[parameterName];
+    } else if (property[parameterName]) {
+      parameterValue = property[parameterName];
+    }
+    return parameterValue ? {
+      name: translatedName,
+      value: parameterValue
+    } : undefined;
   };
 
 }

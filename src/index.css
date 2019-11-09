@@ -81,22 +81,12 @@ hr {
     border-top: none;
 }
 
-.property-detail-list {
-    list-style-type: none;
-    padding-left: 15px;
+.property-detail-list td {
+	padding: 2px;
 }
 
-.property-detail-list {
-    list-style: none;
-    padding: 0;
-}
-.property-detail-list > li {
-    padding-left: 1.3em;
-}
-.property-detail-list > li:before {
-    content: "\f105"; /* FontAwesome Unicode */
-    font-family: FontAwesome;
-    display: inline-block;
-    margin-left: -1.3em; /* same as padding-left set on li */
-    width: 1.3em; /* same as padding-left set on li */
+.property-detail-list > tr > td:first-child:before {
+	content: "\f105"; /* FontAwesome Unicode */
+	font-family: FontAwesome;
+	padding-right: 5px;
 }
