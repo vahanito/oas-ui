@@ -1,6 +1,6 @@
 const propertyDetailNames = {
   format: 'Format',
-  regex: 'Regex',
+  pattern: 'Regex',
   minimum: 'Min',
   maximum: 'Max',
   exclusiveMinimum: 'Exclusive Min',
