@@ -80,3 +80,13 @@ hr {
 .table th {
     border-top: none;
 }
+
+.property-detail-list td {
+	padding: 2px;
+}
+
+.property-detail-list > tr > td:first-child:before {
+	content: "\f105"; /* FontAwesome Unicode */
+	font-family: FontAwesome;
+	padding-right: 5px;
+}

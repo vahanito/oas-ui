@@ -15,8 +15,8 @@ class ExpandableRow extends React.Component {
       <>
         {React.Children.map(this.props.content || null, (child, i) => {
           return (
-            <tr onClick={this.toggleExpanded}>
-              <child.type onClick {...child.props} key={i}/>
+            <tr onClick={this.toggleExpand}>
+              <child.type {...child.props} key={i}/>
             </tr>
           );
         })}
@@ -31,12 +31,11 @@ class ExpandableRow extends React.Component {
     return this.props.disabledExpansion === true;
   };
 
-  toggleExpanded = () => {
-    this.setState(state => ({
-      ...state,
-      isExpanded: !state.isExpanded
-    }));
-  }
+  toggleExpand = () => {
+    this.setState({
+      isExpanded: !this.state.isExpanded
+    });
+  };
 }
 
 ExpandableRow.propTypes = {
