@@ -23,6 +23,7 @@ const getRequiredProperties = (component) => {
 
 const ComponentContent = (props) => {
   const component = OasService.getComponent(props.componentName);
+  const discriminatorPropertyName = component.discriminator && component.discriminator.propertyName ? component.discriminator.propertyName : undefined;
   const properties = getProperties(component);
   const requiredProperties = getRequiredProperties(component);
   const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
@@ -32,7 +33,7 @@ const ComponentContent = (props) => {
     <>
       <h2>{props.componentName}</h2>
       <p>{component.description}</p>
-      {properties && <Properties properties={properties} required={requiredProperties}/>}
+      {properties && <Properties properties={properties} required={requiredProperties} discriminatorPropertyName={discriminatorPropertyName}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
       {component.discriminator && <Discriminator discriminator={component.discriminator}/>}
       <pre>{JSON.stringify(component, null, 2)}</pre>

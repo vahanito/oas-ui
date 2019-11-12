@@ -18,7 +18,7 @@ class PropertyRow extends React.Component {
         disabledExpansion={ref === undefined}
         content={
           <RowContent>
-            {this.rowContent(property, ref)}
+            {this.rowContent(property, ref, )}
           </RowContent>
         }
         expandableContent={
@@ -37,7 +37,10 @@ class PropertyRow extends React.Component {
           {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
         </td>
         <td>
-          <label className={this.props.required ? 'required' : undefined}>{property.propertyName}</label>
+          <label className={this.props.required ? 'required' : undefined}>
+              {property.propertyName}
+              {this.props.isDiscriminator && <span className={'badge badge-success discriminator-label'}>Discriminator</span> }
+          </label>
         </td>
         <td>
           {this.propertyType(property, ref)}
@@ -103,7 +106,8 @@ class PropertyRow extends React.Component {
 
 PropertyRow.propTypes = {
   property: PropTypes.object,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  isDiscriminator: PropTypes.bool
 };
 
 export default PropertyRow;

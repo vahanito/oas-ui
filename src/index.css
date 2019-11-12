@@ -90,3 +90,7 @@ hr {
 	font-family: FontAwesome;
 	padding-right: 5px;
 }
+
+.discriminator-label {
+    margin-left: 10px;
+}
