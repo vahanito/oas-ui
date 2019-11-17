@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ParameterRow from './ParameterRow';
+import Example from '../../component/Example';
 
 class Parameters extends React.Component {
 
@@ -8,6 +9,12 @@ class Parameters extends React.Component {
     const headerParams = this.parameters('header');
     const pathParams = this.parameters('path');
     const queryParams = this.parameters('query');
+    const examples = this.props.parameters
+                         .filter(param => !!param.examples)
+                         .map(param => {
+                             return <Example key={param.name} name={param.name} example={param.examples}/>;
+                           }
+                         );
     return (
       <div className="container-fluid box-shadow">
         <h4>Parameters</h4>
@@ -15,6 +22,9 @@ class Parameters extends React.Component {
         {!!headerParams.length && this.parameterTable('Headers', headerParams)}
         {!!pathParams.length && this.parameterTable('Path', pathParams)}
         {!!queryParams.length && this.parameterTable('Query', queryParams)}
+
+        <h6>Examples</h6>
+        {examples}
       </div>
     );
   }

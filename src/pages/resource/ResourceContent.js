@@ -3,13 +3,9 @@ import Parameters from './parameters/Parameters';
 import RequestBody from './RequestBody';
 import Responses from './responses/Responses';
 import PropTypes from 'prop-types';
-import PathComponent from "../../components/PathComponent";
+import PathComponent from '../../components/PathComponent';
 
-ResourceContent.propTypes = {
-  resource: PropTypes.object
-};
-
-export default function ResourceContent(props) {
+const ResourceContent = (props) => {
   const resource = props.resource;
   return (
     <>
@@ -21,4 +17,10 @@ export default function ResourceContent(props) {
       <pre>{JSON.stringify(resource, null, 2)}</pre>
     </>
   );
-}
+};
+
+ResourceContent.propTypes = {
+  resource: PropTypes.object
+};
+
+export default ResourceContent;
