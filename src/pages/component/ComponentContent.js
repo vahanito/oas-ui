@@ -4,6 +4,7 @@ import Properties from './properties/Properties';
 import Discriminator from './discriminator/Discriminator';
 import OasService from '../../services/OasService';
 import Parent from './Parent';
+import Enumeration from './Enumeration';
 
 const getProperties = (component) => {
   if (typeof component.properties === 'undefined' && component.allOf) {
@@ -41,6 +42,7 @@ const ComponentContent = (props) => {
     <>
       <h2>{props.componentName}</h2>
       <p>{component.description}</p>
+      {component.enum && <Enumeration enumeration={component.enum}/>}
       {properties && <Properties properties={properties} required={requiredProperties}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
       {discriminator && <Discriminator discriminator={discriminator}/>}
