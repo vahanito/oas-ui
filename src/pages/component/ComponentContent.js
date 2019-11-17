@@ -13,6 +13,14 @@ const getProperties = (component) => {
   return component.properties;
 };
 
+const getDiscriminator = (component) => {
+  if (typeof component.discriminator === 'undefined' && component.allOf) {
+    return component.allOf.filter(value => value.discriminator)
+                    .map(value => value.discriminator).pop();
+  }
+  return component.discriminator;
+};
+
 const getRequiredProperties = (component) => {
   if (typeof component.required === 'undefined' && component.allOf) {
     return component.allOf.filter(value => value.properties)
@@ -24,6 +32,7 @@ const getRequiredProperties = (component) => {
 const ComponentContent = (props) => {
   const component = OasService.getComponent(props.componentName);
   const properties = getProperties(component);
+  const discriminator = getDiscriminator(component);
   const requiredProperties = getRequiredProperties(component);
   const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
                                                 .pop().$ref
@@ -34,7 +43,7 @@ const ComponentContent = (props) => {
       <p>{component.description}</p>
       {properties && <Properties properties={properties} required={requiredProperties}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
-      {component.discriminator && <Discriminator discriminator={component.discriminator}/>}
+      {discriminator && <Discriminator discriminator={discriminator}/>}
       <pre>{JSON.stringify(component, null, 2)}</pre>
     </>
   );
