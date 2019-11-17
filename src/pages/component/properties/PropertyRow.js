@@ -31,6 +31,13 @@ class PropertyRow extends React.Component {
   }
 
   rowContent = (property, ref) => {
+    const propertyInfos = [];
+    if (this.props.isDiscriminator) {
+      propertyInfos.push(<tr><td><span className={'badge badge-success discriminator-label'}>discriminator</span></td></tr>);
+    }
+    propertyInfos.push(<tr><td>{this.propertyType(property, ref)}</td></tr>);
+    propertyInfos.push(<tr><td>{this.propertyTypeDetails(property)}</td></tr>);
+
     return (
       <RowContent>
         <td>
@@ -39,12 +46,12 @@ class PropertyRow extends React.Component {
         <td>
           <label className={this.props.required ? 'required' : undefined}>
               {property.propertyName}
-              {this.props.isDiscriminator && <span className={'badge badge-success discriminator-label'}>Discriminator</span> }
           </label>
         </td>
         <td>
-          {this.propertyType(property, ref)}
-          {this.propertyTypeDetails(property)}
+            <table className='table-borderless'>
+                {propertyInfos}
+            </table>
         </td>
         <td>
           {property.description}
