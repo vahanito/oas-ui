@@ -5,11 +5,12 @@ import Discriminator from './discriminator/Discriminator';
 import OasService from '../../services/OasService';
 import Parent from './Parent';
 import Enumeration from './Enumeration';
+import ReactJson from 'react-json-view';
 
 const getProperties = (component) => {
   if (typeof component.properties === 'undefined' && component.allOf) {
     return component.allOf.filter(value => value.properties)
-      .map(value => value.properties).pop();
+                    .map(value => value.properties).pop();
   }
   return component.properties;
 };
@@ -25,7 +26,7 @@ const getDiscriminator = (component) => {
 const getRequiredProperties = (component) => {
   if (typeof component.required === 'undefined' && component.allOf) {
     return component.allOf.filter(value => value.properties)
-      .map(value => value.required).pop();
+                    .map(value => value.required).pop();
   }
   return component.required;
 };
@@ -35,8 +36,9 @@ const ComponentContent = (props) => {
   const properties = getProperties(component);
   const discriminator = getDiscriminator(component);
   const requiredProperties = getRequiredProperties(component);
-  const parentRef = component.allOf ? component.allOf.filter(value => value.$ref)
-                                                .pop().$ref
+  const parentRef = component.allOf ? component.allOf
+                                               .filter(value => value.$ref)
+                                               .pop().$ref
                                     : undefined;
   return (
     <>
@@ -46,7 +48,7 @@ const ComponentContent = (props) => {
       {properties && <Properties properties={properties} required={requiredProperties}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
       {discriminator && <Discriminator discriminator={discriminator}/>}
-      <pre>{JSON.stringify(component, null, 2)}</pre>
+      <ReactJson name="Component detail" collapsed={true} src={component}/>
     </>
   );
 };

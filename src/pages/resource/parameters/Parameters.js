@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ParameterRow from './ParameterRow';
-import Example from '../../component/Example';
+import Example from '../../../components/Example';
 
 class Parameters extends React.Component {
 
