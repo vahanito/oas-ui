@@ -6,6 +6,7 @@ import RowContent from '../../../components/expandablerow/RowContent';
 import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
 import ComponentContent from '../../../pages/component/ComponentContent';
+import classNames from 'classnames';
 
 class ParameterRow extends React.Component {
 
@@ -30,13 +31,17 @@ class ParameterRow extends React.Component {
   }
 
   rowContent = (parameter, ref) => {
+    const classes = classNames({
+      "required": parameter.required,
+      "deprecated": parameter.deprecated
+    });
     return (
       <RowContent>
         <td>
           {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
         </td>
         <td>
-          <label className={parameter.required ? 'required' : undefined}>{parameter.name}</label>
+          <label className={classes}>{parameter.name}</label>
         </td>
         <td>
           {this.paramType(parameter, ref)}

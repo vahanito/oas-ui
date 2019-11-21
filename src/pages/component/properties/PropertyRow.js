@@ -7,6 +7,7 @@ import ComponentContent from '../../../pages/component/ComponentContent';
 import OasService from '../../../services/OasService';
 import ComponentLink from '../../../components/ComponentLink';
 import propertyDetailNames from '../../../services/PropertyDetailNames';
+import classNames from 'classnames';
 
 class PropertyRow extends React.Component {
 
@@ -38,13 +39,17 @@ class PropertyRow extends React.Component {
     propertyInfos.push(<tr><td>{this.propertyType(property, ref)}</td></tr>);
     propertyInfos.push(<tr><td>{this.propertyTypeDetails(property)}</td></tr>);
 
+    const propertyNameClass = classNames({
+       'required': this.props.required,
+       'deprecated': property.deprecated
+    });
     return (
       <RowContent>
         <td>
           {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
         </td>
         <td>
-          <label className={this.props.required ? 'required' : undefined}>
+          <label className={propertyNameClass}>
               {property.propertyName}
           </label>
         </td>
