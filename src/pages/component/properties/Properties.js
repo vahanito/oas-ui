@@ -5,7 +5,8 @@ import PropertyRow from './PropertyRow';
 
 Properties.propTypes = {
   properties: PropTypes.object,
-  required: PropTypes.array
+  required: PropTypes.array,
+  discriminatorPropertyName: PropTypes.string
 };
 
 function Properties(props) {
@@ -15,7 +16,8 @@ function Properties(props) {
                                                                  : false;
                                  return <PropertyRow key={property.propertyName}
                                                      required={required}
-                                                     property={property}/>;
+                                                     property={property}
+                                                     isDiscriminator={property.propertyName === props.discriminatorPropertyName}/>;
                                });
   return (
     <div className="container-fluid box-shadow">

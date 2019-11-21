@@ -18,7 +18,7 @@ class PropertyRow extends React.Component {
         disabledExpansion={ref === undefined}
         content={
           <RowContent>
-            {this.rowContent(property, ref)}
+            {this.rowContent(property, ref, )}
           </RowContent>
         }
         expandableContent={
@@ -31,17 +31,27 @@ class PropertyRow extends React.Component {
   }
 
   rowContent = (property, ref) => {
+    const propertyInfos = [];
+    if (this.props.isDiscriminator) {
+      propertyInfos.push(<tr><td><span className={'badge badge-success discriminator-label'}>discriminator</span></td></tr>);
+    }
+    propertyInfos.push(<tr><td>{this.propertyType(property, ref)}</td></tr>);
+    propertyInfos.push(<tr><td>{this.propertyTypeDetails(property)}</td></tr>);
+
     return (
       <RowContent>
         <td>
           {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
         </td>
         <td>
-          <label className={this.props.required ? 'required' : undefined}>{property.propertyName}</label>
+          <label className={this.props.required ? 'required' : undefined}>
+              {property.propertyName}
+          </label>
         </td>
         <td>
-          {this.propertyType(property, ref)}
-          {this.propertyTypeDetails(property)}
+            <table className='table-borderless'>
+                {propertyInfos}
+            </table>
         </td>
         <td>
           {property.description}
@@ -103,7 +113,8 @@ class PropertyRow extends React.Component {
 
 PropertyRow.propTypes = {
   property: PropTypes.object,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  isDiscriminator: PropTypes.bool
 };
 
 export default PropertyRow;
