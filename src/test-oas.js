@@ -151,9 +151,11 @@ const oas = {
             "schema": {
               "type": "string"
             },
-            "example": {
-              "description": "CustomDescription",
-              "value": "TestExampleResolvedWithKey=CUSTOM_EXAMPLE_KEY_1"
+            "examples": {
+              "example_A": {
+                "description": "CustomDescription",
+                "value": "TestExampleResolvedWithKey=CUSTOM_EXAMPLE_KEY_1"
+              }
             }
           },
           {
@@ -641,8 +643,10 @@ const oas = {
               "schema": {
                 "$ref": "#/components/schemas/ValidationDummy"
               },
-              "example": {
-                "value": "{\"bodyExample\":\"value\"}"
+              "examples": {
+                "example_A": {
+                  "value": "{\"bodyExample\":\"value\"}"
+                }
               }
             }
           },
@@ -1382,8 +1386,31 @@ const oas = {
       },
       "Car": {
         "description": ". Test schema interceptors",
-        "example": {
-          "value": "carExampleValue_1"
+        "examples": {
+          "example_A": {
+            "value": "{\n" +
+                    "  \"id\": \"id-1\",\n" +
+                    "  \"price\": 5000.00,\n" +
+                    "  \"type\": \"car\",\n" +
+                    "  \"amount\": 3,\n" +
+                    "  \"model\": \"Lenovo\",\n" +
+                    "  \"hasWifi\": false,\n" +
+                    "  \"complex\": {\n" +
+                    "    \"property\": \"value\"\n" +
+                    "  }\n" +
+                    "}"
+          },
+          "example_B": {
+            "value": "{\n" +
+                    "  \"id\": \"id-1\",\n" +
+                    "  \"price\": 26000.00,\n" +
+                    "  \"type\": \"car\",\n" +
+                    "  \"amount\": 3,\n" +
+                    "  \"complex\": {\n" +
+                    "    \"property\": \"value\"\n" +
+                    "  }\n" +
+                    "}"
+          }
         },
         "allOf": [
           {
@@ -1408,8 +1435,10 @@ const oas = {
                 "minLength": 2,
                 "type": "string",
                 "description": ". Test schemaField interceptor",
-                "example": {
-                  "value": "field example"
+                "examples": {
+                  "someExample": {
+                    "value": "field example"
+                  }
                 }
               },
               "maxSpeed": {

@@ -8,6 +8,7 @@ import OasService from '../../../services/OasService';
 import ComponentLink from '../../../components/ComponentLink';
 import propertyDetailNames from '../../../services/PropertyDetailNames';
 import classNames from 'classnames';
+import Example from "../../../components/Example";
 
 class PropertyRow extends React.Component {
 
@@ -60,6 +61,7 @@ class PropertyRow extends React.Component {
         </td>
         <td>
           {property.description}
+          {property.examples && <br/> && <br/> && <Example examples={property.examples}/>}
         </td>
       </RowContent>
     );
