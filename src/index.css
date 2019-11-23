@@ -90,3 +90,7 @@ hr {
 	font-family: FontAwesome;
 	padding-right: 5px;
 }
+
+.deprecated {
+    text-decoration: line-through;
+}

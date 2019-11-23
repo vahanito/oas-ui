@@ -50,7 +50,7 @@ class ResourceList extends React.Component {
                                  className='dropdown-item break-line'
                                  onClick={() => this.handleItemClick('')
                                  }>
-                           <PathComponent method={resource.method} path={resource.path}/>
+                           <PathComponent method={resource.method} path={resource.path} deprecated={resource.deprecated}/>
                          </button>
                        </Link>
                      );
@@ -66,7 +66,7 @@ class ResourceList extends React.Component {
                                  className='dropdown-item break-line'
                                  onClick={() => this.handleItemClick('')
                                  }>
-                           <PathComponent method={resource.method} path={resource.path}/>
+                           <PathComponent method={resource.method} path={resource.path} deprecated={resource.deprecated}/>
                          </button>
                        </Link>
                      );

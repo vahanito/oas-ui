@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 PathComponent.propTypes = {
   path: PropTypes.string,
-  method: PropTypes.string
+  method: PropTypes.string,
+  deprecated: PropTypes.bool
 };
 
 export default function PathComponent(props) {
@@ -18,8 +19,10 @@ export default function PathComponent(props) {
     <>
       <span className={props.method}>
         <strong>{props.method}</strong>
-			</span>
-      {path}
+      </span>
+      <span className={props.deprecated ? 'deprecated' : undefined}>
+        {path}
+      </span>
     </>
   );
 }

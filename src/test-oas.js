@@ -292,12 +292,14 @@ const oas = {
         ],
         "summary": "Interceptor summary",
         "operationId": "onlyRequestParamsUsingGET",
+        "deprecated": true,
         "parameters": [
           {
             "name": "Test-Global-Header",
             "in": "header",
             "description": "Some desc",
             "required": false,
+            "deprecated": true,
             "schema": {
               "type": "string"
             }
@@ -335,6 +337,7 @@ const oas = {
             "in": "query",
             "description": ". Interceptor OperationParameter test",
             "required": false,
+            "deprecated": true,
             "schema": {
               "type": "string"
             }
