@@ -14,12 +14,12 @@ const Example = (props) => {
             const json = getJson(props.examples[key].value);
             return <TabPanel key={key}>
                       <div>{props.examples[key].description}</div>
-                      {json && <ReactJson name={false} collapsed={true} src={json}/>}
+                      {json && <ReactJson name={false} collapsed={1} src={json}/>}
                       {!json && <div>{props.examples[key].value}</div>}
                     </TabPanel>;
           });
   return (
-          <div>
+          <div className="container-fluid box-shadow">
             <h5>Examples</h5>
             <Tabs>
               <TabList>
