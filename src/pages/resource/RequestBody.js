@@ -6,6 +6,7 @@ import ExpandableRow from '../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../components/expandablerow/ExpandableContent';
 import RowContent from '../../components/expandablerow/RowContent';
 import ComponentContent from '../../pages/component/ComponentContent';
+import Example from "../../components/Example";
 
 const RequestBody = (props) => {
   const requestBody = props.requestBody;
@@ -46,6 +47,7 @@ const RequestBody = (props) => {
         />
         </tbody>
       </table>
+      {requestBody.content[contentType].examples && <Example examples={requestBody.content[contentType].examples}/>}
     </div>
   );
 };

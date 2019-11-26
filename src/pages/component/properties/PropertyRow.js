@@ -59,10 +59,28 @@ class PropertyRow extends React.Component {
             </table>
         </td>
         <td>
-          {property.description}
+            <div>{property.description}</div>
+            {property.examples && <br/> && <br/> && this.propertyExamples(property)}
         </td>
       </RowContent>
     );
+  };
+
+  propertyExamples = (property) => {
+      const exampleListItems = Object.entries(property.examples)
+              .map(entry => this.propertyExample(entry));
+      return (
+              <div className={'example-description-section'}>
+                  <h6>Examples</h6>
+                  <ul>
+                      {exampleListItems}
+                  </ul>
+              </div>
+      );
+  };
+
+  propertyExample = (exampleEntry) => {
+      return (<li><strong>{exampleEntry[0]}:</strong> {exampleEntry[1].value}</li>);
   };
 
   propertyTypeDetails = (property) => {

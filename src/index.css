@@ -94,3 +94,7 @@ hr {
 .deprecated {
     text-decoration: line-through;
 }
+
+.example-description-section {
+    margin-top: 15px;
+}
