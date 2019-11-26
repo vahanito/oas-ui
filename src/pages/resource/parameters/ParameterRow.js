@@ -49,10 +49,27 @@ class ParameterRow extends React.Component {
         </td>
         <td>
           {parameter.description}
-          {parameter.examples && <br/> && <br/> && <Example examples={parameter.examples}/>}
+          {parameter.examples && <br/> && <br/> && this.parameterExamples(parameter)}
         </td>
       </RowContent>
     );
+  };
+
+  parameterExamples = (parameter) => {
+    const exampleListItems = Object.entries(parameter.examples)
+             .map(entry => this.propertyExample(entry));
+    return (
+             <div className={'example-description-section'}>
+                  <h6>Examples</h6>
+                  <ul>
+                     {exampleListItems}
+                  </ul>
+             </div>
+        );
+    };
+
+  propertyExample = (exampleEntry) => {
+      return (<li><strong>{exampleEntry[0]}:</strong> {exampleEntry[1].value}</li>);
   };
 
   getRef = (param) => {
