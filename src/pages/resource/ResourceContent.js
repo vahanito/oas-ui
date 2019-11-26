@@ -14,7 +14,6 @@ const ResourceContent = (props) => {
       {resource.parameters && <Parameters parameters={resource.parameters}/>}
       {resource.requestBody && <RequestBody requestBody={resource.requestBody}/>}
       {resource.responses && <Responses responses={resource.responses}/>}
-      <pre>{JSON.stringify(resource, null, 2)}</pre>
     </>
   );
 };
