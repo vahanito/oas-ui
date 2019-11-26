@@ -1,7 +1,7 @@
 {
   "name": "oas-ui",
   "description": "Open API Spec GUI Interpreter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
@@ -75,6 +75,7 @@
     "rest",
     "ui"
   ],
+  "files": ["dist/bundle.js"],
   "license": "GNU GPL v3",
   "private": false
 }
