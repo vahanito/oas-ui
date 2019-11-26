@@ -9,7 +9,7 @@ const ResourceContent = (props) => {
   const resource = props.resource;
   return (
     <>
-      <h2><PathComponent method={resource.method} path={resource.path}/></h2>
+      <h2><PathComponent method={resource.method} path={resource.path} deprecated={resource.deprecated}/></h2>
       <h5 className="pl-1 pb-3">{resource.operationId}</h5>
       {resource.parameters && <Parameters parameters={resource.parameters}/>}
       {resource.requestBody && <RequestBody requestBody={resource.requestBody}/>}

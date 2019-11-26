@@ -6,6 +6,7 @@ import OasService from '../../services/OasService';
 import Parent from './Parent';
 import Enumeration from './Enumeration';
 import ReactJson from 'react-json-view';
+import Example from "../../components/Example";
 
 const getProperties = (component) => {
   if (typeof component.properties === 'undefined' && component.allOf) {
@@ -33,6 +34,7 @@ const getRequiredProperties = (component) => {
 
 const ComponentContent = (props) => {
   const component = OasService.getComponent(props.componentName);
+  const discriminatorPropertyName = component.discriminator && component.discriminator.propertyName ? component.discriminator.propertyName : undefined;
   const properties = getProperties(component);
   const discriminator = getDiscriminator(component);
   const requiredProperties = getRequiredProperties(component);
@@ -45,10 +47,10 @@ const ComponentContent = (props) => {
       <h2>{props.componentName}</h2>
       <p>{component.description}</p>
       {component.enum && <Enumeration enumeration={component.enum}/>}
-      {properties && <Properties properties={properties} required={requiredProperties}/>}
+      {properties && <Properties properties={properties} required={requiredProperties} discriminatorPropertyName={discriminatorPropertyName}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
       {discriminator && <Discriminator discriminator={discriminator}/>}
-      <ReactJson name="Component detail" collapsed={true} src={component}/>
+      {component.examples && <Example examples={component.examples} displayNoneAvailableMessage={true}/>}
     </>
   );
 };
