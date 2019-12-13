@@ -12,7 +12,7 @@
     "react-dom": "^16.11.0",
     "react-json-view": "^1.19.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.3.0",
     "react-tabs": "^3.0.0",
     "webpack": "^4.41.2"
   },
@@ -75,7 +75,9 @@
     "rest",
     "ui"
   ],
-  "files": ["dist/bundle.js"],
+  "files": [
+    "dist/bundle.js"
+  ],
   "license": "GNU GPL v3",
   "private": false
 }
