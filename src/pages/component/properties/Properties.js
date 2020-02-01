@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 import OasService from '../../../services/OasService';
 import PropertyRow from './PropertyRow';
 
-Properties.propTypes = {
-  properties: PropTypes.object,
-  required: PropTypes.array,
-  discriminatorPropertyName: PropTypes.string
+const sortProperties = (props, a, b) => {
+  const aRequired = props.required ? props.required.includes(a.propertyName)
+                                   : false;
+  const bRequired = props.required ? props.required.includes(b.propertyName)
+                                   : false;
+  if (aRequired !== bRequired) {
+    return aRequired ? -1 : 1;
+  }
+  return a.propertyName.localeCompare(b.propertyName);
 };
 
-function Properties(props) {
+const Properties = (props) => {
   const properties = OasService.transformProperties(props.properties)
+                               .sort((a, b) => sortProperties(props, a, b))
                                .map(property => {
                                  const required = props.required ? props.required.includes(property.propertyName)
                                                                  : false;
@@ -38,6 +44,12 @@ function Properties(props) {
       </table>
     </div>
   );
-}
+};
+
+Properties.propTypes = {
+  properties: PropTypes.object,
+  required: PropTypes.array,
+  discriminatorPropertyName: PropTypes.string
+};
 
 export default Properties;
