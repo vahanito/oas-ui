@@ -26,7 +26,7 @@ const ComponentContent = (props) => {
       <h2>{props.componentName}</h2>
       <p>{component.description}</p>
       {component.enum && <Enumeration enumeration={component.enum}/>}
-      {properties && <ExpandableProperties component={component} componentName={props.componentName} properties={properties}/>}
+      {properties && <ExpandableProperties key={props.componentName} component={component} componentName={props.componentName} properties={properties}/>}
       {parentRef && <Parent parentRef={parentRef}/>}
       {discriminator && <Discriminator discriminator={discriminator}/>}
       {component.examples && <Example examples={component.examples} displayNoneAvailableMessage={true}/>}

@@ -8,7 +8,8 @@ const propertyDetailNames = {
   minLength: 'Min Length',
   maxLength: 'Max length',
   minItems: 'Min items',
-  maxItems: 'Max items'
+  maxItems: 'Max items',
+  readOnly: 'Read only'
 };
 
 export default propertyDetailNames;

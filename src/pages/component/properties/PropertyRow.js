@@ -96,7 +96,7 @@ class PropertyRow extends React.Component {
           {propertyDetail.name}:
         </td>
         <td>
-          {propertyDetail.value}
+          {propertyDetail.value.toString()}
         </td>
       </tr>
     );
@@ -128,13 +128,13 @@ class PropertyRow extends React.Component {
   };
 
   getPropertyParameter = (property, translatedName, parameterName) => {
-    let parameterValue;
+    let parameterValue = undefined;
     if (property.items && property.items[parameterName]) {
       parameterValue = property.items[parameterName];
     } else if (property[parameterName]) {
       parameterValue = property[parameterName];
     }
-    return parameterValue ? {
+    return parameterValue !== undefined ? {
       name: translatedName,
       value: parameterValue
     } : undefined;
