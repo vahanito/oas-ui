@@ -34,7 +34,9 @@ OasService.getComponents = () => {
 };
 
 OasService.getUniqueTags = () => {
-  return Array.from(new Set(OasService.getPaths().flatMap(value => value.tags)));
+  const tags = Array.from(new Set(OasService.getPaths().flatMap(value => value.tags)));
+  tags.sort((a, b) => a.localeCompare(b));
+  return tags;
 };
 
 OasService.getComponent = (componentName) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import OasService from "../../services/OasService";
+import { Link } from 'react-router-dom';
+import OasService from '../../services/OasService';
 
 class ComponentList extends React.Component {
 
@@ -39,7 +39,9 @@ class ComponentList extends React.Component {
   };
 
   createListItems = () => {
-    return OasService.getComponents().map(
+    return OasService.getComponents()
+                     .sort((a, b) => a.localeCompare(b))
+                     .map(
       item =>
         item.toLowerCase().includes(this.state.search.toLowerCase()) &&
         <Link key={item} to={'/oas-ui/components/' + item}>
