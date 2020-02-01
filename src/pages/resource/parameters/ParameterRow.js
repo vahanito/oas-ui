@@ -7,7 +7,6 @@ import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
 import ComponentContent from '../../../pages/component/ComponentContent';
 import classNames from 'classnames';
-import Example from "../../../components/Example";
 
 class ParameterRow extends React.Component {
 

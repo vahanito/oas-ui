@@ -5,8 +5,7 @@ import Discriminator from './discriminator/Discriminator';
 import OasService from '../../services/OasService';
 import Parent from './Parent';
 import Enumeration from './Enumeration';
-import ReactJson from 'react-json-view';
-import Example from "../../components/Example";
+import Example from '../../components/Example';
 
 const getProperties = (component) => {
   if (typeof component.properties === 'undefined' && component.allOf) {
