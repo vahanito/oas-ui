@@ -7,7 +7,9 @@ class ComponentList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ''
+      search: '',
+      sortedComponents: OasService.getComponents()
+                                  .sort((a, b) => a.localeCompare(b))
     };
   }
 
@@ -39,9 +41,7 @@ class ComponentList extends React.Component {
   };
 
   createListItems = () => {
-    return OasService.getComponents()
-                     .sort((a, b) => a.localeCompare(b))
-                     .map(
+    return this.state.sortedComponents.map(
       item =>
         item.toLowerCase().includes(this.state.search.toLowerCase()) &&
         <Link key={item} to={'/oas-ui/components/' + item}>

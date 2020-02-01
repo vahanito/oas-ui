@@ -49,7 +49,7 @@ class PropertyRow extends React.Component {
     });
     return (
       <RowContent>
-        
+
         <td>
           <label className={propertyNameClass}>
               {property.propertyName}
@@ -84,7 +84,7 @@ class PropertyRow extends React.Component {
   };
 
   propertyExample = (exampleEntry) => {
-      return (<li><strong>{exampleEntry[0]}:</strong> {exampleEntry[1].value}</li>);
+    return (<li key={exampleEntry[0]}><strong>{exampleEntry[0]}:</strong> {exampleEntry[1].value}</li>);
   };
 
   propertyTypeDetails = (property) => {
