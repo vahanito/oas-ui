@@ -25,9 +25,6 @@ const ResponseRow = (props) => {
       content={
         <RowContent>
           <td>
-            {component && <i className="fa fa-caret-down" aria-hidden="true" />}
-          </td>
-          <td>
             {response.httpStatus}
           </td>
           <td>

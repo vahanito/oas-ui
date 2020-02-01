@@ -38,9 +38,6 @@ class ParameterRow extends React.Component {
     return (
       <RowContent>
         <td>
-          {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
-        </td>
-        <td>
           <label className={classes}>{parameter.name}</label>
         </td>
         <td>

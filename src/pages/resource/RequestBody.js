@@ -6,7 +6,7 @@ import ExpandableRow from '../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../components/expandablerow/ExpandableContent';
 import RowContent from '../../components/expandablerow/RowContent';
 import ComponentContent from '../../pages/component/ComponentContent';
-import Example from "../../components/Example";
+import Example from '../../components/Example';
 
 const RequestBody = (props) => {
   const requestBody = props.requestBody;
@@ -30,9 +30,6 @@ const RequestBody = (props) => {
           disabledExpansion={componentName === undefined}
           content={
             <RowContent>
-              <td>
-                {componentName && <i className="fa fa-caret-down" aria-hidden="true"/>}
-              </td>
               <td>
                 <ComponentLink componentName={componentName}/>
               </td>

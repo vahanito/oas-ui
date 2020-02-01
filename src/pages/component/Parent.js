@@ -28,7 +28,6 @@ function Parent(props) {
         <ExpandableRow
           content={
             <RowContent>
-              <td><i className="fa fa-caret-down" aria-hidden="true"/></td>
               <td>
                 <ComponentLink componentName={componentName}/>
               </td>

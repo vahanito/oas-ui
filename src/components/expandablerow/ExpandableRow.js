@@ -16,6 +16,10 @@ class ExpandableRow extends React.Component {
         {React.Children.map(this.props.content || null, (child, i) => {
           return (
             <tr onClick={this.toggleExpand}>
+              <td>
+                {!this.props.disabledExpansion && this.state.isExpanded && <i className="fa fa-caret-down" aria-hidden="true"/>}
+                {!this.props.disabledExpansion && !this.state.isExpanded && <i className="fa fa-caret-right" aria-hidden="true"/>}
+              </td>
               <child.type {...child.props} key={i}/>
             </tr>
           );

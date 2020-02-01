@@ -18,9 +18,7 @@ class PropertyRow extends React.Component {
       <ExpandableRow
         disabledExpansion={ref === undefined}
         content={
-          <RowContent>
-            {this.rowContent(property, ref, )}
-          </RowContent>
+          this.rowContent(property, ref)
         }
         expandableContent={
           <ExpandableContent>
@@ -34,10 +32,16 @@ class PropertyRow extends React.Component {
   rowContent = (property, ref) => {
     const propertyInfos = [];
     if (this.props.isDiscriminator) {
-      propertyInfos.push(<tr><td><span className={'badge badge-success discriminator-label'}>discriminator</span></td></tr>);
+      propertyInfos.push(<tr key={property.propertyName + 'discriminator'}>
+        <td><span className={'badge badge-success discriminator-label'}>discriminator</span></td>
+      </tr>);
     }
-    propertyInfos.push(<tr><td>{this.propertyType(property, ref)}</td></tr>);
-    propertyInfos.push(<tr><td>{this.propertyTypeDetails(property)}</td></tr>);
+    propertyInfos.push(<tr key={property.propertyName}>
+      <td>{this.propertyType(property, ref)}</td>
+    </tr>);
+    propertyInfos.push(<tr key={property.propertyName + 'detail'}>
+      <td>{this.propertyTypeDetails(property)}</td>
+    </tr>);
 
     const propertyNameClass = classNames({
        'required': this.props.required,
@@ -45,9 +49,7 @@ class PropertyRow extends React.Component {
     });
     return (
       <RowContent>
-        <td>
-          {ref && <i className="fa fa-caret-down" aria-hidden="true"/>}
-        </td>
+        
         <td>
           <label className={propertyNameClass}>
               {property.propertyName}
@@ -55,7 +57,9 @@ class PropertyRow extends React.Component {
         </td>
         <td>
             <table className='table-borderless'>
-                {propertyInfos}
+              <tbody>
+              {propertyInfos}
+              </tbody>
             </table>
         </td>
         <td>
@@ -97,7 +101,11 @@ class PropertyRow extends React.Component {
       </tr>
     );
     return (
-      <table className='table-borderless property-detail-list'>{listItems}</table>
+      <table className='table-borderless property-detail-list'>
+        <tbody>
+        {listItems}
+        </tbody>
+      </table>
     );
   };
 

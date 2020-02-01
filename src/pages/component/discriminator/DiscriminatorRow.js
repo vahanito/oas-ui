@@ -16,9 +16,6 @@ function DiscriminatorRow(props) {
     <ExpandableRow
       content={
         <RowContent>
-          <td>
-            <i className="fa fa-caret-down" aria-hidden="true"/>
-          </td>
           <td>{props.value}</td>
           <td><ComponentLink componentName={props.componentName}/></td>
         </RowContent>
