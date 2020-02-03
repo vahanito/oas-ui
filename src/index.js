@@ -17,7 +17,7 @@ import oas from './test-oas';
 // 		}
 // 		ReactDOM.render(<App onUpdate={params.onUpdate} initValue="abc" />, document.getElementById('root'));
 // eslint-disable-next-line no-undef
-ReactDOM.render(<App initValue={oas}/>, document.getElementById('root'));
+ReactDOM.render(<App initValue={oas} urlPrefix={'/oas-ui'}/>, document.getElementById('root'));
 // 	}
 // })();
 

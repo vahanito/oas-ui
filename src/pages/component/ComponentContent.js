@@ -4,9 +4,9 @@ import Discriminator from './discriminator/Discriminator';
 import OasService from '../../services/OasService';
 import Parent from './Parent';
 import Enumeration from './Enumeration';
-import Example from '../../components/Example';
+import Example from "../../components/Example";
 import ExpandableProperties from './properties/ExpandableProperties';
-import { getParentRef, getProperties } from './properties/PropertyUtils';
+import {getParentRef, getProperties} from './properties/PropertyUtils';
 
 const getDiscriminator = (component) => {
   if (typeof component.discriminator === 'undefined' && component.allOf) {

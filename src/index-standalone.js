@@ -9,7 +9,7 @@ import './App.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export const showOas = (specUrl, specData, element) => {
+export const showOas = (specUrl, specData, urlPrefix, element) => {
     if (specUrl) {
         const Http = new XMLHttpRequest();
         Http.open("GET", specUrl);
@@ -17,7 +17,7 @@ export const showOas = (specUrl, specData, element) => {
         Http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 const specObject = JSON.parse(Http.responseText);
-                ReactDOM.render(<App initValue={specObject}/>, element);
+                ReactDOM.render(<App initValue={specObject} urlPrefix={urlPrefix}/>, element);
             }
         }
     } else {

@@ -54,7 +54,7 @@ class ResourceList extends React.Component {
     return OasService.getResourcesWithoutTag()
                      .map(resource =>
                        (this.showResource(resource)) &&
-                       <Link key={resource.operationId} to={'/oas-ui/resources/' + resource.operationId}>
+                       <Link key={resource.operationId} to={'/resources/' + resource.operationId}>
                          <button type='button'
                                  data-toggle="tooltip" data-placement="bottom" title={resource.operationId}
                                  className='dropdown-item break-line'
@@ -71,7 +71,7 @@ class ResourceList extends React.Component {
                      .sort((a, b) => this.sortResources(a, b))
                      .map(resource =>
                        (this.showTag(tag) || this.showResource(resource)) &&
-                       <Link key={resource.operationId} to={'/oas-ui/resources/' + resource.operationId}>
+                       <Link key={resource.operationId} to={'/resources/' + resource.operationId}>
                          <button type='button'
                                  data-toggle="tooltip" data-placement="bottom" title={resource.operationId}
                                  className='dropdown-item break-line'

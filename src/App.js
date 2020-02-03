@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      oas: props.initValue
+      oas: props.initValue,
+      urlPrefix: props.urlPrefix
     };
     OasService.setOas(props.initValue);
   }
@@ -19,15 +20,15 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Router>
-          <Route path="/oas-ui/:category?/:item?" component={MenuFactory}/>
+        <Router basename={this.state.urlPrefix}>
+          <Route path={'/:category?/:item?'} component={MenuFactory}/>
           <main>
             <div className="container-fluid">
               <Switch>
-                <Route exact path="/oas-ui/" component={Home}/>
-                <Route path="/oas-ui/resources/:resource?" component={ResourceContentFactory}/>
-                <Route path="/oas-ui/components/:component?" component={ComponentContentFactory}/>
-                <Redirect from="*" to="/oas-ui/"/>
+                <Route exact component={Home}/>
+                <Route path='/resources/:resource?' component={ResourceContentFactory}/>
+                <Route path='/components/:component?' component={ComponentContentFactory}/>
+                <Redirect from="*" to={'/'}/>
               </Switch>
             </div>
           </main>

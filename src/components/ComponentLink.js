@@ -11,9 +11,9 @@ function ComponentLink(props) {
   const componentName = props.componentName;
   return (
     <>
-      {componentName && <Link to={'/oas-ui/components/' + componentName}>{componentName}{props.isArray ? '[]' : ''}</Link>}
+      {componentName && <Link to={'/components/' + componentName}>{componentName}{props.isArray ? '[]' : ''}</Link>}
       {componentName &&
-       <Link to={'/oas-ui/components/' + componentName} target="_blank">
+       <Link to={'/components/' + componentName} target="_blank">
          <i className="pl-2 fa fa-external-link" aria-hidden="true"/>
        </Link>}
     </>

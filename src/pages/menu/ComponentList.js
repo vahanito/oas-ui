@@ -44,7 +44,7 @@ class ComponentList extends React.Component {
     return this.state.sortedComponents.map(
       item =>
         item.toLowerCase().includes(this.state.search.toLowerCase()) &&
-        <Link key={item} to={'/oas-ui/components/' + item}>
+        <Link key={item} to={'/components/' + item}>
           <button type="button" className="dropdown-item break-line" key={item}
                   onClick={() => this.handleItemClick(item)}>
             {item}
