@@ -21,14 +21,14 @@ class App extends React.Component {
     return (
       <>
         <Router basename={this.state.urlPrefix}>
-          <Route path={'/:category?/:item?'} component={MenuFactory}/>
+          <Route path='/:category?/:item?' component={MenuFactory}/>
           <main>
             <div className="container-fluid">
               <Switch>
-                <Route exact component={Home}/>
+                <Route exact path='/' component={Home}/>
                 <Route path='/resources/:resource?' component={ResourceContentFactory}/>
                 <Route path='/components/:component?' component={ComponentContentFactory}/>
-                <Redirect from="*" to={'/'}/>
+                <Redirect from="*" to='/'/>
               </Switch>
             </div>
           </main>
