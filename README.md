@@ -32,8 +32,7 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 
     <title>OAS UI 3 Usage demo</title>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://unpkg.com/oas-ui@0.1.3/dist/bundle.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/oas-ui@latest/dist/bundle.js" type="text/javascript"></script>
 
     <script type="text/javascript">
 		function initialize() {
@@ -56,7 +55,7 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 
 ![Component with discriminator](https://github.com/vahanito/oas-ui-example/blob/master/images/component_with_disciminator.png "Component with discriminator")
 
-![Homemapge - resources search](https://github.com/vahanito/oas-ui-example/blob/master/images/homepage-resources_search.PNG "Homemapge - resources search")
+![Homepage - resources search](https://github.com/vahanito/oas-ui-example/blob/master/images/homepage-resources_search.PNG "Homemapge - resources search")
 
 ![Resource with parameters, request body, examples and responses](https://github.com/vahanito/oas-ui-example/blob/master/images/resource_parameters_requestbody_examples_responses.png "Resource with parameters, request body, examples and responses")
 
