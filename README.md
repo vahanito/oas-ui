@@ -19,7 +19,7 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 ```https://unpkg.com/oas-ui@latest/dist/bundle.js```
 
 ## Current version
-0.1.3
+1.0.1
 
 ## Usage
 ```html
