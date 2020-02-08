@@ -1,6 +1,6 @@
 import React from 'react';
 import OasService from './services/OasService';
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import ComponentContentFactory from './components/ComponentContentFactory';
 import ResourceContentFactory from './components/ResourceContentFactory';
 import MenuFactory from './components/MenuFactory';
@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Router basename={this.state.urlPrefix}>
+        <Router>
           <Route path='/:category?/:item?' component={MenuFactory}/>
           <main>
             <div className="container-fluid">
