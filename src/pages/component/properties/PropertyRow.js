@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
-import RowContent from '../../../components/expandablerow/RowContent';
 import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
 import ComponentContent from '../../../pages/component/ComponentContent';
 import OasService from '../../../services/OasService';
@@ -48,8 +47,7 @@ class PropertyRow extends React.Component {
        'deprecated': property.deprecated
     });
     return (
-      <RowContent>
-
+      <>
         <td>
           <label className={propertyNameClass}>
               {property.propertyName}
@@ -66,7 +64,7 @@ class PropertyRow extends React.Component {
             <div>{property.description}</div>
             {property.examples && <br/> && <br/> && this.propertyExamples(property)}
         </td>
-      </RowContent>
+      </>
     );
   };
 

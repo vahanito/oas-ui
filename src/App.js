@@ -2,47 +2,34 @@ import React from 'react';
 import OasService from './services/OasService';
 import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import ComponentContentFactory from './components/ComponentContentFactory';
-import ResourceContentFactory from './components/ResourceContentFactory';
 import MenuFactory from './components/MenuFactory';
 import Home from './pages/home/Home';
+import ResourceContentFactory from './components/ResourceContentFactory';
+import PropTypes from 'prop-types';
 
-class App extends React.Component {
+const App = ({oas}) => {
+  OasService.setOas(oas);
+  return (
+    <>
+      <Router>
+        <Route path='/:category?/:item?' component={MenuFactory}/>
+        <main>
+          <div className="container-fluid">
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route path='/resources/:resource?' component={ResourceContentFactory}/>
+              <Route path='/components/:component?' component={ComponentContentFactory}/>
+              <Redirect from="*" to='/'/>
+            </Switch>
+          </div>
+        </main>
+      </Router>
+    </>
+  );
+};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      oas: props.initValue,
-      urlPrefix: props.urlPrefix
-    };
-    OasService.setOas(props.initValue);
-  }
-
-  render() {
-    return (
-      <>
-        <Router>
-          <Route path='/:category?/:item?' component={MenuFactory}/>
-          <main>
-            <div className="container-fluid">
-              <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/resources/:resource?' component={ResourceContentFactory}/>
-                <Route path='/components/:component?' component={ComponentContentFactory}/>
-                <Redirect from="*" to='/'/>
-              </Switch>
-            </div>
-          </main>
-        </Router>
-      </>
-    );
-  }
-
-  onChange = (event) => {
-    this.setState({
-      text: event.target.value
-    });
-    this.props.onUpdate(event.target.value);
-  };
-}
+App.propTypes = {
+  oas: PropTypes.object
+};
 
 export default App;

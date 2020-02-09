@@ -4,14 +4,16 @@ import OasService from '../services/OasService';
 import ResourceContent from '../pages/resource/ResourceContent';
 import NotFound from '../pages/NotFound';
 
-ResourceContentFactory.propTypes = {
-  match: PropTypes.object
-};
-
-export default function ResourceContentFactory(props) {
-  const resourceName = props.match.params['resource'];
+const ResourceContentFactory = ({match}) => {
+  const resourceName = match.params['resource'];
   const resource = OasService.getResource(resourceName);
   return (
     resource ? <ResourceContent resource={resource}/> : <NotFound resource={resourceName}/>
   );
-}
+};
+
+ResourceContentFactory.propTypes = {
+  match: PropTypes.object
+};
+
+export default ResourceContentFactory;

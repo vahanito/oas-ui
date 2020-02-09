@@ -5,10 +5,8 @@ import ComponentContent from '../../../pages/component/ComponentContent';
 import ComponentLink from '../../../components/ComponentLink';
 import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
-import RowContent from '../../../components/expandablerow/RowContent';
 
-const ResponseRow = (props) => {
-  const response = props.response;
+const ResponseRow = ({response}) => {
   let contentType;
   let componentName;
   if (response.content) {
@@ -23,7 +21,7 @@ const ResponseRow = (props) => {
     <ExpandableRow
       disabledExpansion={component === undefined}
       content={
-        <RowContent>
+        <>
           <td>
             {response.httpStatus}
           </td>
@@ -36,7 +34,7 @@ const ResponseRow = (props) => {
           <td>
             {contentType}
           </td>
-        </RowContent>
+        </>
       }
       expandableContent={
         <ExpandableContent>

@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import OasService from '../services/OasService';
 import Menu from '../pages/menu/Menu';
 
+const MenuFactory = ({match}) => {
+  const categories = OasService.getCategories();
+  const category = match.params.category ? match.params.category : categories[0];
+  return (
+    <Menu categories={categories}
+          category={category}
+          item={match.params.item}/>
+  );
+};
+
 MenuFactory.propTypes = {
   match: PropTypes.object
 };
 
-export default function MenuFactory(props) {
-  const categories = OasService.getCategories();
-  const category = props.match.params.category ? props.match.params.category : categories[0];
-  return (
-    <Menu categories={categories}
-          category={category}
-          item={props.match.params.item}/>
-  );
-}
+export default MenuFactory;

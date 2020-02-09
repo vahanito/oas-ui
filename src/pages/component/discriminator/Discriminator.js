@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DiscriminatorRow from "./DiscriminatorRow";
+import DiscriminatorRow from './DiscriminatorRow';
 
-Discriminator.propTypes = {
-  discriminator: PropTypes.object
-};
-
-function Discriminator(props) {
-  const mappings = Object.entries(props.discriminator.mapping);
+const Discriminator = ({discriminator}) => {
+  const mappings = Object.entries(discriminator.mapping);
   const tableBody = mappings.map(([key, value]) => <DiscriminatorRow key={value}
                                                                      componentName={value}
                                                                      value={key}/>);
@@ -20,7 +16,7 @@ function Discriminator(props) {
           Property name:
         </div>
         <div className="col">
-          <strong>{props.discriminator.propertyName}</strong>
+          <strong>{discriminator.propertyName}</strong>
         </div>
       </div>
       <table className="table table-sm">
@@ -37,6 +33,10 @@ function Discriminator(props) {
       </table>
     </div>
   );
-}
+};
+
+Discriminator.propTypes = {
+  discriminator: PropTypes.object
+};
 
 export default Discriminator;

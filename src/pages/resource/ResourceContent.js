@@ -5,8 +5,7 @@ import Responses from './responses/Responses';
 import PropTypes from 'prop-types';
 import PathComponent from '../../components/PathComponent';
 
-const ResourceContent = (props) => {
-  const resource = props.resource;
+const ResourceContent = ({resource}) => {
   return (
     <>
       <h2><PathComponent method={resource.method} path={resource.path} deprecated={resource.deprecated}/></h2>

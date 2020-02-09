@@ -3,30 +3,29 @@ import PropTypes from 'prop-types';
 import ComponentContent from '../ComponentContent';
 import ComponentLink from '../../../components/ComponentLink';
 import ExpandableRow from '../../../components/expandablerow/ExpandableRow';
-import RowContent from '../../../components/expandablerow/RowContent';
 import ExpandableContent from '../../../components/expandablerow/ExpandableContent';
+
+const DiscriminatorRow = ({value, componentName}) => {
+  return (
+    <ExpandableRow
+      content={
+        <>
+          <td>{value}</td>
+          <td><ComponentLink componentName={componentName}/></td>
+        </>
+      }
+      expandableContent={
+        <ExpandableContent>
+          <ComponentContent componentName={componentName}/>
+        </ExpandableContent>
+      }
+    />
+  );
+};
 
 DiscriminatorRow.propTypes = {
   value: PropTypes.string,
   componentName: PropTypes.string
 };
-
-function DiscriminatorRow(props) {
-  return (
-    <ExpandableRow
-      content={
-        <RowContent>
-          <td>{props.value}</td>
-          <td><ComponentLink componentName={props.componentName}/></td>
-        </RowContent>
-      }
-      expandableContent={
-        <ExpandableContent>
-          <ComponentContent componentName={props.componentName}/>
-        </ExpandableContent>
-      }
-    />
-  );
-}
 
 export default DiscriminatorRow;

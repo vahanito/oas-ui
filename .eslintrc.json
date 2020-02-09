@@ -8,11 +8,14 @@
   ],
   "plugins": [
     "prettier",
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "no-duplicate-imports": 2,
     "no-unused-vars": "error",
-    "prefer-const": 1
+    "prefer-const": 1,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

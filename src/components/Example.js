@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactJson from 'react-json-view';
-import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-const Example = (props) => {
-  if (!props.examples) {
+const Example = ({examples}) => {
+  if (!examples) {
     return (<div>No examples available.</div>);
   }
-  const tabTitles = Object.keys(props.examples).map(key => <Tab key={key}>{key}</Tab>);
-  const tabContents = Object.keys(props.examples)
+  const tabTitles = Object.keys(examples).map(key => <Tab key={key}>{key}</Tab>);
+  const tabContents = Object.keys(examples)
           .map(key => {
-            const json = getJson(props.examples[key].value);
+            const json = getJson(examples[key].value);
             return <TabPanel key={key}>
-                      <div>{props.examples[key].description}</div>
+              <div>{examples[key].description}</div>
                       {json && <ReactJson name={false} collapsed={1} src={json}/>}
-                      {!json && <div>{props.examples[key].value}</div>}
+              {!json && <div>{examples[key].value}</div>}
                     </TabPanel>;
           });
   return (

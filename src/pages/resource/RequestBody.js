@@ -4,12 +4,10 @@ import OasService from '../../services/OasService';
 import ComponentLink from '../../components/ComponentLink';
 import ExpandableRow from '../../components/expandablerow/ExpandableRow';
 import ExpandableContent from '../../components/expandablerow/ExpandableContent';
-import RowContent from '../../components/expandablerow/RowContent';
 import ComponentContent from '../../pages/component/ComponentContent';
 import Example from '../../components/Example';
 
-const RequestBody = (props) => {
-  const requestBody = props.requestBody;
+const RequestBody = ({requestBody}) => {
   const contentType = Object.keys(requestBody.content)[0];
   const componentName = OasService.componentNameFromRef(requestBody.content[contentType].schema.$ref);
   return (
@@ -29,12 +27,12 @@ const RequestBody = (props) => {
         <ExpandableRow
           disabledExpansion={componentName === undefined}
           content={
-            <RowContent>
+            <>
               <td>
                 <ComponentLink componentName={componentName}/>
               </td>
               <td>{contentType}</td>
-            </RowContent>
+            </>
           }
           expandableContent={
             <ExpandableContent>

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import OasService from '../../../services/OasService';
 import ResponseRow from './ResponseRow';
 
-const Responses = (props) => {
-  const responses = OasService.transformResponses(props.responses);
+const Responses = ({responses}) => {
+  const transformedResponses = OasService.transformResponses(responses);
   return (
     <div className="container-fluid box-shadow">
       <h4>Responses</h4>
@@ -21,7 +21,7 @@ const Responses = (props) => {
         </thead>
         <tbody>
           {
-            responses.map(response => <ResponseRow key={response.httpStatus} response={response} />)
+            transformedResponses.map(response => <ResponseRow key={response.httpStatus} response={response}/>)
           }
         </tbody>
       </table>

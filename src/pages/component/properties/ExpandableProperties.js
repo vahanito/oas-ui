@@ -39,7 +39,7 @@ class ExpandableProperties extends React.Component {
           </div>}
         </h4>
         <hr/>
-        <Properties required={this.state.required}
+        <Properties requiredProperties={this.state.required}
                     properties={properties}
                     discriminators={this.state.discriminators}/>
       </div>
