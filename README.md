@@ -21,6 +21,10 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 ## Current version
 1.0.1
 
+## Live demo
+
+[https://oas-ui.herokuapp.com/](https://oas-ui.herokuapp.com/)
+
 ## Usage
 ```html
 <!DOCTYPE html>
@@ -47,16 +51,3 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 </body>
 </html>
 ```
-
-## Screenshots
-![Component example](https://github.com/vahanito/oas-ui-example/blob/master/images/component_example.png "Component example")
-
-![Component with properties and parent](https://github.com/vahanito/oas-ui-example/blob/master/images/component_properties_and_parent.png "Component with properties and parent")
-
-![Component with discriminator](https://github.com/vahanito/oas-ui-example/blob/master/images/component_with_disciminator.png "Component with discriminator")
-
-![Homepage - resources search](https://github.com/vahanito/oas-ui-example/blob/master/images/homepage-resources_search.PNG "Homemapge - resources search")
-
-![Resource with parameters, request body, examples and responses](https://github.com/vahanito/oas-ui-example/blob/master/images/resource_parameters_requestbody_examples_responses.png "Resource with parameters, request body, examples and responses")
-
-![Resource parameters](https://github.com/vahanito/oas-ui-example/blob/master/images/resource_params.png "Resource parameters")
