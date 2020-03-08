@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Unreleased
+## [1.1.0]
 
 - Changed BrowserRouting to HashRouting for easier integration
 
@@ -13,4 +13,5 @@
 - Adjusted ordering of resources
 - Change icon when component is expanded
 
+[1.1.0]: https://github.com/vahanito/oas-ui/releases/tag/v1.1.0
 [1.0.1]: https://github.com/vahanito/oas-ui/releases/tag/v1.0.1

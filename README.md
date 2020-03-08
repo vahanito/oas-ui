@@ -1,6 +1,6 @@
 # OAS UI
 
-OpenAPI 3 Specicifation User Interface (interpreter).
+OpenAPI 3 Specification User Interface (interpreter).
 
 OAS UI allows to visualize API resources based on the given OpenAPI specification v3.
 
@@ -19,19 +19,17 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 ```https://unpkg.com/oas-ui@latest/dist/bundle.js```
 
 ## Current version
-1.0.1
+1.1.0
 
 ## Live demo
 
-[https://oas-ui.herokuapp.com/](https://oas-ui.herokuapp.com/)
+[https://vahanito.github.io/oas-ui-example/](https://vahanito.github.io/oas-ui-example/)
 
 ## Usage
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/base/href"/>
-
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 
@@ -40,11 +38,10 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
 
     <script type="text/javascript">
 		function initialize() {
-			showOas.showOas('/base/href', null, '/spec/url', document.getElementById("content"));
+			showOas.showOas('/spec/url', null , "content");
 		}
     </script>
 </head>
-
 
 <body onload="initialize()">
 <div id="content"/>

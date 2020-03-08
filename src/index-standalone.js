@@ -9,13 +9,14 @@ import './App.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export const showOas = (specUrl, specData, element) => {
+export const showOas = (specUrl, specData, elementName) => {
+  const element = document.getElementById(elementName);
   if (specUrl) {
     fetch(specUrl, {method: 'GET'})
       .then(response => response.json())
-      .then(spec => <App oas={spec}/>);
+      .then(spec => ReactDOM.render(<App oas={spec}/>, element));
   } else {
-    ReactDOM.render(<App initValue={specData}/>, element);
+    ReactDOM.render(<App oas={specData}/>, element);
   }
 };
 
