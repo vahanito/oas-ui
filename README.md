@@ -34,6 +34,8 @@ OAS UI allows to visualize API resources based on the given OpenAPI specificatio
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 
     <title>OAS UI 3 Usage demo</title>
+	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://unpkg.com/oas-ui@latest/dist/bundle.js" type="text/javascript"></script>
 
     <script type="text/javascript">
